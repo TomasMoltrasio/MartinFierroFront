@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CartContext from "context/CartContext";
 import CartItem from "components/CartItem";
-import { Container, Col, Row } from "@nextui-org/react";
+import { Grid } from "@nextui-org/react";
 
 export default function CartContainer() {
   const { state, removeProduct, clearCart } = useContext(CartContext);
@@ -12,59 +12,29 @@ export default function CartContainer() {
   };
 
   return (
-    <div
-      className="
-      flex
-      flex-col
-      items-start
-      justify-start
-      w-full
-      h-screen
-      "
-    >
-      <Container
-        className="
-      flex
-      flex-col
-      justify-center
-      items-center
-      w-full
-      h-full
-      p-4
-      "
-      >
-        <Row justify="center">
-          <Col>
-            <h1>Carrito</h1>
-          </Col>
-        </Row>
-        <Row justify="center">
-          <Col>
-            <table>
-              <thead>
-                <tr>
-                  <th>Imagen</th>
-                  <th>Producto</th>
-                  <th>Precio</th>
-                  <th>Cantidad</th>
-                  <th>Subtotal</th>
-                  <th>Eliminar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart.map((product) => (
-                  <CartItem key={product.id} product={product} />
-                ))}
-              </tbody>
-            </table>
-          </Col>
-        </Row>
-        <Row justify="center">
-          <Col>
-            <button onClick={handleClearCart}>Vaciar carrito</button>
-          </Col>
-        </Row>
-      </Container>
+    <div className="w-full h-screen flex flex-col items-center justify-start mt-8 bg-slate-300">
+      <div className="w-full h-1/3 flex flex-col items-center justify-center ">
+        <h1 className="text-3xl font-bold mb-4">Carrito</h1>
+        <Grid.Container gap={2}>
+          <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className="w-1/4 h-full flex flex-col items-start justify-center border-2 border-black rounded-lg">
+              {cart.map((product) => (
+                <Grid justify="start" xs={12} key={product.id}>
+                  <CartItem product={product} />
+                </Grid>
+              ))}
+            </div>
+          </div>
+        </Grid.Container>
+      </div>
+      <div className="w-full h-1/3 flex flex-col items-center justify-center">
+        <button
+          className="w-1/3 h-10 rounded-md mb-4 border-2 border-gray-300"
+          onClick={handleClearCart}
+        >
+          Vaciar carrito
+        </button>
+      </div>
     </div>
   );
 }

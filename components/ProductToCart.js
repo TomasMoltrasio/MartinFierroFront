@@ -24,15 +24,33 @@ export default function ProductToCart({ product, handleShowModal }) {
     <div className="w-full h-full flex flex-col items-center justify-start">
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-        <Image src={product.image} />
+        <Image src={product.image} height="%40" />
         <p className="text-lg mt-4 mb-4">{product.description}</p>
+      </div>
+      <div className="w-full h-1/3 flex flex-col items-center justify-center">
+        {product.category === "Meganesas" ? (
+          <select
+            onChange={(e) => (product.of = e.target.value)}
+            className="w-full h-10 rounded-md mb-4 border-2 border-gray-300"
+          >
+            <option value="carne">Carne</option>
+            <option value="pollo">Pollo</option>
+          </select>
+        ) : null}
+        <select
+          onChange={(e) => (product.garnish = e.target.value)}
+          className="w-full h-10 rounded-md mb-4 border-2 border-gray-300"
+        >
+          <option value="papas">Papas fritas</option>
+          <option value="ensalada">Ensalada</option>
+        </select>
       </div>
 
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <div className="w-full h-full flex flex-row items-center justify-center">
           <div className="w-1/3 h-full flex flex-col items-center justify-center">
             <p className="text-lg">Precio:</p>
-            <p className="text-lg font-bold">${product.price}</p>
+            <p className="text-lg font-bold">${product.price * quantity}</p>
           </div>
           <div className="w-1/3 h-full flex flex-col items-center justify-center">
             <p className="text-lg">Cantidad:</p>

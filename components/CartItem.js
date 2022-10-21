@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import CartContext from "context/CartContext";
-import { Image } from "@nextui-org/react";
+import { Image, Col, Row } from "@nextui-org/react";
 
 export default function CartItem({ product }) {
   const { removeProduct } = useContext(CartContext);
@@ -10,17 +10,42 @@ export default function CartItem({ product }) {
   };
 
   return (
-    <tr>
-      <td>
-        <Image src={product.image} alt={product.name} width={50} height={50} />
-      </td>
-      <td>{product.name}</td>
-      <td>{product.price}</td>
-      <td>{product.quantity}</td>
-      <td>{product.price * product.quantity}</td>
-      <td>
-        <button onClick={() => handleRemoveProduct(product)}>Remove</button>
-      </td>
-    </tr>
+    <div className="flex flex-row items-center w-full h-full">
+      <Row justify="center" fluid align="center">
+        <Col justify="center">
+          <Image
+            src={product.image}
+            height="80px"
+            width="80px"
+            objectFit="cover"
+            alt="Card example background"
+          />
+        </Col>
+        <Col justify="center">
+          <h3
+            className="
+        text-lg font-semibold ml-4
+      "
+          >{`${product.quantity}x ${product.name}`}</h3>
+        </Col>
+        <Col justify="center">
+          <h3
+            className="
+        text-xl font-semibold ml-4
+      "
+          >{`$${product.price * product.quantity}`}</h3>
+        </Col>
+        <Col justify="center">
+          <button
+            onClick={() => handleRemoveProduct(product)}
+            className="
+        text-xl font-semibold ml-4
+      "
+          >
+            Eliminar
+          </button>
+        </Col>
+      </Row>
+    </div>
   );
 }
