@@ -1,8 +1,8 @@
-import { Card, Col, Row, Button, Text, Image, Modal } from "@nextui-org/react";
+import { Card, Text, Row, Button, Col, Image, Modal } from "@nextui-org/react";
 import { useState } from "react";
 import ProductToCart from "./ProductToCart";
 
-export default function CardDish({ product }) {
+export default function CardMenu({ product, nameId }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -12,33 +12,14 @@ export default function CardDish({ product }) {
   return (
     <Card
       className="shadow-lg shadow-slate-600 border-2 border-slate-600"
-      css={{
-        w: "80%",
-        h: "300px",
-        "@md": { w: "30%", h: "300px" },
-        "@lg": { w: "30%", h: "300px" },
-        "@xl": { w: "30%", h: "300px" },
-        "@2xl": { w: "30%", h: "300px" },
-        "@3xl": { w: "30%", h: "300px" },
-        "@4xl": { w: "30%", h: "300px" },
-      }}
+      css={{ w: "100%", h: "300px" }}
     >
-      <Modal
-        open={showModal}
-        onClose={handleShowModal}
-        closeButton
-        blur
-        width="400px"
-        height="300px"
-      >
-        <ProductToCart product={product} handleShowModal={handleShowModal} />
-      </Modal>
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
         <Row justify="flex-end">
           <Button
             className="hover:scale-125"
-            auto
             onClick={() => setShowModal(true)}
+            auto
           >
             <Image src="/AddCart.svg" alt="AddCart" width={40} height={40} />
           </Button>
@@ -46,7 +27,7 @@ export default function CardDish({ product }) {
       </Card.Header>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
-          src={product.image}
+          src={nameId === "Menu" ? product.image : `../${product.image}`}
           width="100%"
           height="100%"
           objectFit="cover"
@@ -59,7 +40,7 @@ export default function CardDish({ product }) {
           bottom: 0,
           zIndex: 1,
         }}
-        className="bg-gradient-to-r border-t-2 border-slate-800
+        className="border-t-2 border-slate-800
         bg-white
          md:p-4 lg:p-4 xl:p-4 2xl:p-4 3xl:p-4 4xl:p-4"
       >
@@ -71,7 +52,7 @@ export default function CardDish({ product }) {
               transform="uppercase"
               color="#000"
               className="
-                text-base
+                text-lg
                 md:text-lg
                 lg:text-lg
                 xl:text-lg
@@ -88,7 +69,7 @@ export default function CardDish({ product }) {
               h3
               transform="uppercase"
               className="
-                text-2xl
+                text-lg
                 md:text-xl
                 lg:text-xl
                 xl:text-xl
@@ -100,11 +81,21 @@ export default function CardDish({ product }) {
             text-slate-900
             "
             >
-              ${product.price}
+              {`$${product.price}`}
             </Text>
           </Col>
         </Row>
       </Card.Footer>
+      <Modal
+        open={showModal}
+        onClose={handleShowModal}
+        closeButton
+        blur
+        width="400px"
+        height="300px"
+      >
+        <ProductToCart product={product} handleShowModal={handleShowModal} />
+      </Modal>
     </Card>
   );
 }

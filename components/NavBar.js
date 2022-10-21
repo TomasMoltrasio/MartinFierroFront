@@ -1,17 +1,11 @@
 import NextLink from "next/link";
-import {
-  Navbar,
-  Link,
-  Text,
-  Avatar,
-  Dropdown,
-  Image,
-  Button,
-} from "@nextui-org/react";
+import { Navbar, Link, Dropdown, Image } from "@nextui-org/react";
 import { HiOutlineMenu } from "react-icons/hi";
 import { ImCart } from "react-icons/im";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const router = useRouter();
   const collapseItems = [
     {
       title: "Inicio",
@@ -23,7 +17,7 @@ export default function NavBar() {
     },
     {
       title: "Contacto",
-      link: "/contact",
+      link: "/contacto",
     },
   ];
 
@@ -38,7 +32,7 @@ export default function NavBar() {
         zIndex: 1000,
       }}
     >
-      <Navbar.Toggle showIn="xs">
+      <Navbar.Toggle showIn="xs" id="navbar-toggle">
         <HiOutlineMenu size={30} />
       </Navbar.Toggle>
       <Navbar.Brand
@@ -65,9 +59,13 @@ export default function NavBar() {
         variant="underline"
         className="text-xl font-semibold"
       >
-        <Navbar.Link href="#">Inicio</Navbar.Link>
+        <NextLink href="/">
+          <Navbar.Link isActive={router.pathname === "/" ? true : false}>
+            Inicio
+          </Navbar.Link>
+        </NextLink>
         <Dropdown variant="underline">
-          <Navbar.Item isActive>
+          <Navbar.Item isActive={router.pathname === "/menu" ? true : false}>
             <Dropdown.Button
               auto
               light
@@ -91,7 +89,7 @@ export default function NavBar() {
                 // dropdown item left icon
                 svg: {
                   color: "$secondary",
-                  mr: "$4",
+                  mr: "$2",
                 },
                 // dropdown item title
                 "& .nextui-dropdown-item-content": {
@@ -101,18 +99,39 @@ export default function NavBar() {
               },
             }}
           >
-            <Dropdown.Item href="/category">Ver todas el menú</Dropdown.Item>
-            <Dropdown.Item href="/category/1">Meganesas</Dropdown.Item>
-            <Dropdown.Item href="/category/2">Picadas</Dropdown.Item>
-            <Dropdown.Item href="/category/3">Minutas</Dropdown.Item>
-            <Dropdown.Item href="/category/4">Pastas</Dropdown.Item>
-            <Dropdown.Item href="/category/5">Acompañamientos</Dropdown.Item>
-            <Dropdown.Item href="/category/6">Postres</Dropdown.Item>
-            <Dropdown.Item href="/category/7">Bebidas</Dropdown.Item>
+            <Dropdown.Item href="/menu">
+              <NextLink href="/menu">Ver todo el menú</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/1">
+              <NextLink href="/menu/1">Meganesas</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/2">
+              <NextLink href="/menu/2">Picadas</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/3">
+              <NextLink href="/menu/3">Minutas</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/4">
+              <NextLink href="/menu/4">Pastas</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/5">
+              <NextLink href="/menu/5">Acompañamientos</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/6">
+              <NextLink href="/menu/6">Postres</NextLink>
+            </Dropdown.Item>
+            <Dropdown.Item href="/menu/7">
+              <NextLink href="/menu/7">Bebidas</NextLink>
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-
-        <Navbar.Link href="#">Contacto</Navbar.Link>
+        <NextLink href="/contacto">
+          <Navbar.Link
+            isActive={router.pathname === "/contacto" ? true : false}
+          >
+            Contacto
+          </Navbar.Link>
+        </NextLink>
       </Navbar.Content>
       <Navbar.Content
         css={{
@@ -129,19 +148,23 @@ export default function NavBar() {
       <Navbar.Collapse disableAnimation>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem
-            key={item}
+            key={`collapse-${item}`}
             activeColor="warning"
-            isActive={index === 2}
+            isActive={router.pathname === item.link ? true : false}
           >
-            <Link
-              color="inherit"
-              css={{
-                minWidth: "100%",
-              }}
-              href="#"
-            >
-              {item.title}
-            </Link>
+            <NextLink href={item.link}>
+              <Link
+                color="inherit"
+                css={{
+                  minWidth: "100%",
+                }}
+                onClick={() => {
+                  document.getElementById("navbar-toggle").click();
+                }}
+              >
+                {item.title}
+              </Link>
+            </NextLink>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
