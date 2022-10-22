@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 const initialState = {
-  cart: [],
+  cart: cookies.get("cart") || [],
 };
 
 const useInitialState = () => {
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState([]);
+
+  useEffect(() => {
+    setState(initialState);
+  }, []);
 
   const addProduct = (product, quantity) => {
     const newCart = [...state.cart];
@@ -14,10 +21,23 @@ const useInitialState = () => {
     );
 
     if (productInCart) {
-      productInCart.quantity += quantity;
+      if (productInCart.garnish === product.garnish) {
+        productInCart.quantity += quantity;
+      } else {
+        newCart.push({ ...product, quantity });
+      }
     } else {
       newCart.push({ ...product, quantity });
     }
+
+    cookies.set(
+      "cart",
+      newCart,
+      { path: "/" },
+      {
+        expires: new Date(Date.now() + 1000 * 60 * 60),
+      }
+    );
 
     setState({
       ...state,
@@ -40,6 +60,11 @@ const useInitialState = () => {
       newCart.splice(index, 1);
     }
 
+    cookies.set("cart", newCart, { path: "/" }),
+      {
+        expires: new Date(Date.now() + 1000 * 60 * 60),
+      };
+
     setState({
       ...state,
       cart: newCart,
@@ -47,6 +72,15 @@ const useInitialState = () => {
   };
 
   const clearCart = () => {
+    cookies.set(
+      "cart",
+      [],
+      { path: "/" },
+      {
+        expires: new Date(Date.now() + 1000 * 60 * 60),
+      }
+    );
+
     setState({
       ...state,
       cart: [],

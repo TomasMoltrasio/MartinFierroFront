@@ -1,24 +1,14 @@
 import Head from "next/head";
-import MenuContainer from "containers/MenuContainer";
 import { getAllProducts } from "services/products";
+import MenuFeatureContainer from "containers/MenuFeatureContainer";
 
-export default function Menu({ products }) {
+export default function Menu() {
   return (
     <>
       <Head>
         <title>Menu</title>
       </Head>
-      <MenuContainer products={products} />;
+      <MenuFeatureContainer />;
     </>
   );
-}
-
-export async function getStaticProps() {
-  const products = await getAllProducts();
-  products.sort((a, b) => a.price - b.price);
-  return {
-    props: {
-      products,
-    },
-  };
 }

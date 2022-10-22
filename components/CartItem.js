@@ -31,7 +31,7 @@ export default function CartItem({ product }) {
         <Col justify="center">
           <h3
             className="
-        text-xl font-semibold ml-4
+        text-lg font-semibold ml-4
       "
           >{`$${product.price * product.quantity}`}</h3>
         </Col>
@@ -39,10 +39,10 @@ export default function CartItem({ product }) {
           <button
             onClick={() => handleRemoveProduct(product)}
             className="
-        text-xl font-semibold ml-4
+        text-sm font-semibold ml-4 text-red-500
       "
           >
-            Eliminar
+            Quitar
           </button>
         </Col>
       </Row>

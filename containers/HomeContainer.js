@@ -1,5 +1,4 @@
 import { Grid, Text, Button } from "@nextui-org/react";
-import NextLink from "next/link";
 import CardDish from "components/CardDish";
 import { MdRestaurantMenu } from "react-icons/md";
 import { useRouter } from "next/router";
@@ -35,9 +34,12 @@ export default function HomeContainer({ product }) {
           size="lg"
           auto
           rounded
+          bordered
+          borderWeight={2}
+          color={"#fff"}
           iconRight={<MdRestaurantMenu fill="currentColor" />}
           onClick={() => router.push("/menu")}
-          className="text-black bg-gradient-to-r from-indigo-900/50 via-indigo-800/50  to-violet-800/50 hover:scale-110"
+          className="text-black hover:scale-110"
         >
           Ir al menú
         </Button>

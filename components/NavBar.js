@@ -1,11 +1,20 @@
 import NextLink from "next/link";
-import { Navbar, Link, Dropdown, Image } from "@nextui-org/react";
+import { Navbar, Link, Dropdown, Image, Badge } from "@nextui-org/react";
 import { HiOutlineMenu } from "react-icons/hi";
 import { ImCart } from "react-icons/im";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import CartContext from "context/CartContext";
 
 export default function NavBar() {
   const router = useRouter();
+  const { state } = useContext(CartContext);
+  const { cart } = state;
+  const cartCount =
+    cart && cart.length > 0
+      ? cart.reduce((acc, product) => acc + product.quantity, 0)
+      : 0;
+
   const collapseItems = [
     {
       title: "Inicio",
@@ -64,67 +73,11 @@ export default function NavBar() {
             Inicio
           </Navbar.Link>
         </NextLink>
-        <Dropdown variant="underline">
-          <Navbar.Item isActive={router.pathname === "/menu" ? true : false}>
-            <Dropdown.Button
-              auto
-              light
-              css={{
-                px: 0,
-                dflex: "center",
-                svg: { pe: "none" },
-              }}
-              ripple={false}
-            >
-              Menú
-            </Dropdown.Button>
-          </Navbar.Item>
-          <Dropdown.Menu
-            aria-label="ACME features"
-            css={{
-              $$dropdownMenuWidth: "340px",
-              $$dropdownItemHeight: "70px",
-              "& .nextui-dropdown-item": {
-                py: "$4",
-                // dropdown item left icon
-                svg: {
-                  color: "$secondary",
-                  mr: "$2",
-                },
-                // dropdown item title
-                "& .nextui-dropdown-item-content": {
-                  w: "100%",
-                  fontWeight: "$semibold",
-                },
-              },
-            }}
-          >
-            <Dropdown.Item href="/menu">
-              <NextLink href="/menu">Ver todo el menú</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/1">
-              <NextLink href="/menu/1">Meganesas</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/2">
-              <NextLink href="/menu/2">Picadas</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/3">
-              <NextLink href="/menu/3">Minutas</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/4">
-              <NextLink href="/menu/4">Pastas</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/5">
-              <NextLink href="/menu/5">Acompañamientos</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/6">
-              <NextLink href="/menu/6">Postres</NextLink>
-            </Dropdown.Item>
-            <Dropdown.Item href="/menu/7">
-              <NextLink href="/menu/7">Bebidas</NextLink>
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <NextLink href="/menu">
+          <Navbar.Link isActive={router.pathname === "/menu" ? true : false}>
+            Menu
+          </Navbar.Link>
+        </NextLink>
         <NextLink href="/contacto">
           <Navbar.Link
             isActive={router.pathname === "/contacto" ? true : false}
@@ -133,22 +86,24 @@ export default function NavBar() {
           </Navbar.Link>
         </NextLink>
       </Navbar.Content>
-      <Navbar.Content
-        css={{
-          "@xs": {
-            w: "12%",
-            jc: "center",
-          },
-        }}
-      >
-        <NextLink href="/cart">
-          <ImCart size={30} className="cursor-pointer" />
-        </NextLink>
-      </Navbar.Content>
+      <NextLink href="/cart">
+        <Navbar.Content
+          css={{
+            "@xs": {
+              w: "12%",
+              jc: "center",
+            },
+          }}
+        >
+          <Badge content={cartCount} color="error">
+            <ImCart size={30} className="cursor-pointer" />
+          </Badge>
+        </Navbar.Content>
+      </NextLink>
       <Navbar.Collapse disableAnimation>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem
-            key={`collapse-${item}`}
+            key={`navbar-collapse-${index}`}
             activeColor="warning"
             isActive={router.pathname === item.link ? true : false}
           >

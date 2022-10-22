@@ -27,7 +27,7 @@ export default function CardMenu({ product, nameId }) {
       </Card.Header>
       <Card.Body css={{ p: 0 }}>
         <Card.Image
-          src={nameId === "Menu" ? product.image : `../${product.image}`}
+          src={nameId === "Menu" ? product.image : `../../${product.image}`}
           width="100%"
           height="100%"
           objectFit="cover"
