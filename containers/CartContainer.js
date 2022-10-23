@@ -26,8 +26,6 @@ export default function CartContainer() {
     return 0;
   };
 
-  console.log(cart);
-
   return (
     <div className="w-full h-max flex flex-col items-center justify-start mt-8 ">
       <div className="w-full h-1/3 flex flex-col items-center justify-center">

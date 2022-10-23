@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import CartContext from "context/CartContext";
-import { getOrderTime, sendWhatsappMessage } from "services/checkout";
+import { sendWhatsappMessage } from "services/checkout";
 import { Input, Radio, Textarea } from "@nextui-org/react";
+import getOrderTime from "services/orderTime";
 
 export default function Checkout() {
   const { state } = useContext(CartContext);
@@ -15,11 +16,7 @@ export default function Checkout() {
   const [selectedOrderTime, setSelectedOrderTime] = useState("");
 
   useEffect(() => {
-    const getOrder = async () => {
-      const data = await getOrderTime();
-      setOrderTime(data);
-    };
-    getOrder();
+    setOrderTime(getOrderTime());
   }, []);
 
   const getTotal = () => {
