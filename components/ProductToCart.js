@@ -15,9 +15,13 @@ export default function ProductToCart({ product, handleShowModal }) {
 
   const handleAddProduct = () => {
     handleShowModal();
-    product.garnish = `${garnish} con ${garnishAdd}`;
-    product.price = product.price + garnishPrice;
-    addProduct(product, quantity);
+    const newProduct = {
+      ...product,
+      garnish: garnish + " " + garnishAdd.join(", "),
+      of: of,
+      price: product.price + garnishPrice,
+    };
+    addProduct(newProduct, quantity);
     Swal.fire({
       title: "Producto agregado al carrito",
       icon: "success",
@@ -31,6 +35,7 @@ export default function ProductToCart({ product, handleShowModal }) {
     setGarnish(e.target.value);
     if (e.target.value === "nada") {
       setGarnishPrice(-100);
+      setGarnishAdd([]);
     } else {
       setGarnishPrice(0);
     }

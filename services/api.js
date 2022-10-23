@@ -10,6 +10,10 @@ const endPoints = {
     deleteProduct: (id) => `${API_URL}/products/${id}`,
     createProduct: `${API_URL}/products`,
   },
+  checkout: {
+    getOrderTime: `${API_URL}/checkout/orderTime`,
+    sendWhatsappMessage: `${API_URL}/checkout`,
+  },
 };
 
 export default endPoints;

@@ -1,18 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
 import CartItem from "components/CartItem";
-import { Grid } from "@nextui-org/react";
+import { Grid, Modal } from "@nextui-org/react";
+import Checkout from "components/Checkout";
 
 export default function CartContainer() {
   const { state, clearCart } = useContext(CartContext);
+  const [showModal, setShowModal] = useState(false);
   const { cart } = state;
 
   const handleClearCart = () => {
     clearCart();
   };
 
-  const handleCheckout = () => {
-    console.log("Checkout");
+  const handleShowModal = () => {
+    setShowModal(false);
   };
 
   const getTotal = () => {
@@ -23,6 +25,8 @@ export default function CartContainer() {
     }
     return 0;
   };
+
+  console.log(cart);
 
   return (
     <div className="w-full h-max flex flex-col items-center justify-start mt-8 ">
@@ -57,7 +61,7 @@ export default function CartContainer() {
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <button
           className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:scale-110 border-green-600"
-          onClick={handleCheckout}
+          onClick={() => setShowModal(true)}
           disabled={!cart || cart.length === 0}
         >
           {getTotal() > 0
@@ -65,6 +69,16 @@ export default function CartContainer() {
             : "Confirmar pedido"}
         </button>
       </div>
+      <Modal
+        open={showModal}
+        onClose={handleShowModal}
+        closeButton
+        blur
+        width="400px"
+        height="100%"
+      >
+        <Checkout />
+      </Modal>
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <button
           className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
