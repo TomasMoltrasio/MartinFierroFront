@@ -49,11 +49,7 @@ export default function Checkout({ handleShowModal }) {
     const { url } = await sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
-    if (isMobile()) {
-      window.open(`https://web.whatsapp.com/${url}`, "_blank");
-    } else {
-      window.open(`whatsapp://${url}`, "_blank");
-    }
+    window.open(`whatsapp://${url}`, "_blank");
   };
 
   return (
