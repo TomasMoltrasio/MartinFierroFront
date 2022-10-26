@@ -51,10 +51,12 @@ export default function HomeContainer({ product }) {
           bg-white
           rounded-full
           shadow-md
-          hover:bg-gray-700
           hover:shadow-none
-          hover:text-white
           hover:scale-110
+          transition-all
+          duration-300
+          ease-in-out
+          transform
         "
               bordered
               borderWeight={2}
@@ -69,7 +71,6 @@ export default function HomeContainer({ product }) {
             className="
             flex flex-col items-center justify-center
             w-full h-full
-    
           "
           >
             <Text

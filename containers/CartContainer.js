@@ -33,38 +33,44 @@ export default function CartContainer() {
           Carrito de compras
         </Text>
       </div>
-      <div
-        className="flex flex-col items-center bg-slate-200 mt-4 border-2 border-black justify-center w-full md:w-2/6 lg:2/6 xl:w-2/6
+      {cart && cart.length > 0 ? (
+        <>
+          <div
+            className="flex flex-col items-center bg-slate-200 mt-4 border-2 border-black justify-center w-full md:w-2/6 lg:2/6 xl:w-2/6
       2xl:w-2/6 3xl:w-2/6 4xl:w-2/6 rounded-lg h-full"
-      >
-        {(cart &&
-          cart.length > 0 &&
-          cart.map((product) => (
-            <CartItem key={product.id} product={product} />
-          ))) || (
-          <Text h3 className="text-center text-gray-800 text-2xl">
+          >
+            {cart &&
+              cart.length > 0 &&
+              cart.map((product) => (
+                <CartItem key={product.id} product={product} />
+              ))}
+          </div>
+          <div className="flex flex-col items-center justify-center w-full h-full">
+            <button
+              className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:scale-110 border-green-600"
+              onClick={() => setShowModal(true)}
+              disabled={!cart || cart.length === 0}
+            >
+              {getTotal() > 0
+                ? `Confirmar pedido $${getTotal()}`
+                : "Confirmar pedido"}
+            </button>
+            <button
+              className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
+              onClick={handleClearCart}
+              disabled={!cart || cart.length === 0}
+            >
+              Vaciar carrito
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <Text h3 className="text-center text-gray-800 text-3xl mt-24">
             No hay productos en el carrito
           </Text>
-        )}
-      </div>
-      <div className="flex flex-col items-center justify-center w-full h-full">
-        <button
-          className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:scale-110 border-green-600"
-          onClick={() => setShowModal(true)}
-          disabled={!cart || cart.length === 0}
-        >
-          {getTotal() > 0
-            ? `Confirmar pedido $${getTotal()}`
-            : "Confirmar pedido"}
-        </button>
-        <button
-          className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
-          onClick={handleClearCart}
-          disabled={!cart || cart.length === 0}
-        >
-          Vaciar carrito
-        </button>
-      </div>
+        </div>
+      )}
       <Modal
         open={showModal}
         onClose={handleShowModal}

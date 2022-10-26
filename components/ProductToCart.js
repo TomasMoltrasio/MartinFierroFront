@@ -175,7 +175,8 @@ export default function ProductToCart({ product, handleShowModal }) {
           disabled={
             (garnish === "" && product.garnish) ||
             (product.category === "Meganesas" && of === "") ||
-            (garnish === "ensalada" && garnishAdd.length === 0)
+            (garnish === "ensalada" && garnishAdd.length === 0) ||
+            (product.name === "Ensalada" && garnishAdd.length === 0)
           }
         >
           Agregar al carrito

@@ -95,7 +95,7 @@ export default function NavBar() {
             },
           }}
         >
-          <Badge content={cartCount} color="error">
+          <Badge content={cartCount > 0 ? cartCount : null} color="error">
             <ImCart size={30} className="cursor-pointer" />
           </Badge>
         </Navbar.Content>

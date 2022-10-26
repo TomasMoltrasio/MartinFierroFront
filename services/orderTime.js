@@ -1,5 +1,5 @@
 const getOrderTime = () => {
-  const morningStart = 0;
+  const morningStart = 11;
   const morningEnd = 15;
   const afternoonStart = 18;
   const afternoonEnd = 23;
