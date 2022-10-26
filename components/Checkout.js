@@ -3,8 +3,11 @@ import CartContext from "context/CartContext";
 import { sendWhatsappMessage } from "services/checkout";
 import { Input, Radio, Textarea, Loading } from "@nextui-org/react";
 import getOrderTime from "services/orderTime";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Checkout({ handleShowModal }) {
+  const router = useRouter();
   const { state, clearCart } = useContext(CartContext);
   const { cart } = state;
   const [orderTime, setOrderTime] = useState([]);
@@ -18,10 +21,6 @@ export default function Checkout({ handleShowModal }) {
   useEffect(() => {
     setOrderTime(getOrderTime());
   }, []);
-
-  const isMobile = () => {
-    return window.innerWidth <= 768;
-  };
 
   const getTotal = () => {
     if (cart && cart.length > 0) {
@@ -49,7 +48,11 @@ export default function Checkout({ handleShowModal }) {
     const { url } = await sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
-    window.open(`whatsapp://${url}`, "_blank");
+    router.push(
+      `https://api.whatsapp.com/${url}`,
+      `https://api.whatsapp.com/${url}`,
+      { shallow: true }
+    );
   };
 
   return (

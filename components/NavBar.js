@@ -21,8 +21,12 @@ export default function NavBar() {
       link: "/",
     },
     {
-      title: "Menu",
+      title: "Menú",
       link: "/menu",
+    },
+    {
+      title: "Nuestro salón",
+      link: "/salon",
     },
     {
       title: "Contacto",
@@ -75,7 +79,12 @@ export default function NavBar() {
         </NextLink>
         <NextLink href="/menu">
           <Navbar.Link isActive={router.pathname === "/menu" ? true : false}>
-            Menu
+            Menú
+          </Navbar.Link>
+        </NextLink>
+        <NextLink href="/salon">
+          <Navbar.Link isActive={router.pathname === "/salon" ? true : false}>
+            Nuestro salón
           </Navbar.Link>
         </NextLink>
         <NextLink href="/contacto">
