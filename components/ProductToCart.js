@@ -53,27 +53,37 @@ export default function ProductToCart({ product, handleShowModal }) {
         <p className="text-lg mt-4 mb-4">{product.description}</p>
       </div>
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
-        {product.category === "Meganesas" ? (
+        {product.of && product.of.length > 0 ? (
           <select
-            onChange={(e) => handleAddOf(e)}
+            onChange={handleAddOf}
             className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300"
           >
             <option value="">Elegir una opción</option>
-            <option value="carne">Carne</option>
-            <option value="pollo">Pollo</option>
+            {product.of.map((of, index) => (
+              <option key={`of-option-${index}`} value={of}>
+                {of.charAt(0).toUpperCase() + of.slice(1)}
+              </option>
+            ))}
           </select>
         ) : null}
-        <select
-          onChange={(e) => handleAddGarnish(e)}
-          className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300"
-        >
-          <option value="">Elegir guarnición</option>
-          <option value="papas">Papas fritas</option>
-          <option value="ensalada">Ensalada</option>
-          <option value="nada">Sin Guarnicion</option>
-        </select>
+        {product.garnish && product.garnish.length > 0 ? (
+          <select
+            onChange={handleAddGarnish}
+            className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300"
+          >
+            <option value="">Elegir una opción</option>
+            {product.garnish.map((garnish, index) => (
+              <option key={`garnish-option-${index}`} value={garnish}>
+                {garnish.charAt(0).toUpperCase() + garnish.slice(1)}
+              </option>
+            ))}
+            <option value="nada">
+              {product.category !== "Pastas" ? "Sin guarnicion" : "Sin salsa"}
+            </option>
+          </select>
+        ) : null}
       </div>
-      {garnish === "papas" ? (
+      {garnish === "papas" || product.name === "Papas fritas" ? (
         <div className="w-full h-1/3 flex flex-col items-center justify-center">
           <Collapse
             title="¿Queres agregar algo a tus papas?"
@@ -97,7 +107,7 @@ export default function ProductToCart({ product, handleShowModal }) {
           </Collapse>
         </div>
       ) : null}
-      {garnish === "ensalada" ? (
+      {garnish === "ensalada" || product.name === "Ensalada" ? (
         <div className="w-full h-1/3 flex flex-col items-center justify-center">
           <Collapse
             title="¿Como queres armar tu ensalada?"
@@ -163,7 +173,7 @@ export default function ProductToCart({ product, handleShowModal }) {
           bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500"
           onClick={handleAddProduct}
           disabled={
-            garnish === "" ||
+            (garnish === "" && product.garnish) ||
             (product.category === "Meganesas" && of === "") ||
             (garnish === "ensalada" && garnishAdd.length === 0)
           }

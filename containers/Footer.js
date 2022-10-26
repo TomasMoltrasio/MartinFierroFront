@@ -4,7 +4,7 @@ import { Text } from "@nextui-org/react";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-row items-center justify-between w-full h-12 border-t">
+    <footer className="flex flex-row items-center justify-between w-full h-max py-2 border-t">
       <div className="flex flex-row items-center justify-start w-max h-full">
         <a
           href="https://www.linkedin.com/in/tomas-moltrasio-5193461b8/"

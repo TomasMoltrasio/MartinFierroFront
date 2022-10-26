@@ -1,4 +1,4 @@
-import { Grid, Text, Button } from "@nextui-org/react";
+import { Text, Button } from "@nextui-org/react";
 import CardDish from "components/CardDish";
 import { MdRestaurantMenu } from "react-icons/md";
 import { useRouter } from "next/router";
@@ -8,58 +8,101 @@ export default function HomeContainer({ product }) {
   const router = useRouter();
 
   return (
-    <Grid.Container
-      direction="column"
-      justify="flex-start"
-      className="w-screen h-full"
-    >
-      <Grid xs={12} justify="center">
-        <Text
-          h1
-          className="
-            text-center
-            text-3xl
-            font-normal
-            mb-2
-            "
-        >{`Hoy ${todayName} nuestro horario es de`}</Text>
-      </Grid>
-      <Grid xs={12} justify="center">
-        <Text h1 className="text-center text-2xl font-normal mb-5">
-          10:30 a 15:00 y de 18:30 a 23:00
-        </Text>
-      </Grid>
-      <Grid xs={12} justify="center">
-        <Button
-          size="lg"
-          auto
-          rounded
-          bordered
-          borderWeight={2}
-          color={"#fff"}
-          iconRight={<MdRestaurantMenu fill="currentColor" />}
-          onClick={() => router.push("/menu")}
-          className="text-black hover:scale-110"
-        >
-          Ir al menú
-        </Button>
-      </Grid>
-
-      <Grid xs={12} justify="center">
-        <Text
-          className="
-            text-3xl font-normal text-center mt-5 mb-1 p-2
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      {todayName !== "lunes" ? (
+        <>
+          <div
+            className="
+        flex flex-col items-center justify-center
+        w-full h-full
+      "
+          >
+            <Text
+              h2
+              className="
+          text-center
+          text-gray-800
+          text-3xl
         "
-          h3
+            >
+              {`Hoy ${todayName} nuestro horario es de`}
+            </Text>
+            <Text
+              h3
+              className="
+          text-center
+          text-gray-800
+          text-2xl
+        "
+            >
+              10:30 a 15:00 y de 18:30 a 23:00
+            </Text>
+          </div>
+          <div
+            className="
+          flex flex-col items-center justify-center w-full h-full"
+          >
+            <Button
+              className="
+          w-1/12
+          h-12
+          text-black
+          text-lg
+          bg-white
+          rounded-full
+          shadow-md
+          hover:bg-gray-700
+          hover:shadow-none
+          hover:text-white
+          hover:scale-110
+        "
+              bordered
+              borderWeight={2}
+              color={"#000"}
+              onClick={() => router.push("/menu")}
+              iconRight={<MdRestaurantMenu size={20} />}
+            >
+              Ir al menú
+            </Button>
+          </div>
+          <div
+            className="
+            flex flex-col items-center justify-center
+            w-full h-full
+    
+          "
+          >
+            <Text
+              h2
+              className="
+          text-center
+          text-gray-800
+          text-3xl
+          mb-4
+        "
+            >
+              {`Nuestro plato del dia`}
+            </Text>
+            <CardDish product={product} />
+          </div>
+        </>
+      ) : (
+        <div
+          className="
+          flex flex-col items-center justify-center w-full h-full"
         >
-          {todayName === "Lunes"
-            ? "Hoy nos tomamos un descanso"
-            : `Nuestro plato del dia`}
-        </Text>
-      </Grid>
-      <Grid justify="center" xs={12}>
-        <CardDish product={product} />
-      </Grid>
-    </Grid.Container>
+          <Text
+            h2
+            className="
+          text-center
+          text-gray-800
+          text-3xl
+        "
+          >
+            {`Hoy ${todayName} nos tomamos un descanso, volvemos mañana.`}
+          </Text>
+        </div>
+      )}
+    </div>
   );
 }

@@ -5,16 +5,13 @@ import Head from "next/head";
 export default function MenuSingle({ products, nameId }) {
   return (
     <>
-      <Head>
-        <title>{nameId}</title>
-      </Head>
       <MenuContainer products={products} nameId={nameId} />
     </>
   );
 }
 
 export async function getStaticPaths() {
-  const categories = 7;
+  const categories = 8;
   const paths = [];
   for (let i = 1; i <= categories; i++) {
     paths.push({ params: { id: i.toString() } });

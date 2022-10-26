@@ -11,8 +11,11 @@ export default function CardMenu({ product, nameId }) {
 
   return (
     <Card
-      className="shadow-lg shadow-slate-600 border-2 border-slate-600"
+      isPressable
+      isHoverable
+      className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 hover:scale-105"
       css={{ w: "100%", h: "300px" }}
+      onPress={() => setShowModal(true)}
     >
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
         <Row justify="flex-end">

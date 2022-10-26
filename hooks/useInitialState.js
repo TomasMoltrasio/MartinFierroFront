@@ -48,7 +48,9 @@ const useInitialState = () => {
   const removeProduct = (product) => {
     const newCart = [...state.cart];
     const productInCart = newCart.find(
-      (productInCart) => productInCart._id === product._id
+      (productInCart) =>
+        productInCart._id === product._id &&
+        productInCart.garnish === product.garnish
     );
 
     if (productInCart) {

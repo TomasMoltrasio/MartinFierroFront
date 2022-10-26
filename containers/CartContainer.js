@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
 import CartItem from "components/CartItem";
-import { Grid, Modal } from "@nextui-org/react";
+import { Modal, Text } from "@nextui-org/react";
 import Checkout from "components/Checkout";
 
 export default function CartContainer() {
@@ -27,36 +27,27 @@ export default function CartContainer() {
   };
 
   return (
-    <div className="w-full h-max flex flex-col items-center justify-start mt-8 ">
-      <div className="w-full h-1/3 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold mb-4">Carrito</h1>
-        <Grid.Container justify="center" gap={2}>
-          {cart && cart.length > 0 ? (
-            <div className="flex flex-row items-center justify-center mx-2 w-full sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-full">
-              <div className="flex flex-col items-start justify-center w-full h-full border-2 border-black rounded-lg">
-                {cart && cart.length > 0
-                  ? cart.map((product) => (
-                      <Grid
-                        justify="start"
-                        xs={12}
-                        key={`cart-item-${product.id}`}
-                      >
-                        <CartItem product={product} />
-                      </Grid>
-                    ))
-                  : null}
-              </div>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center w-full h-full">
-              <h1 className="text-xl font-base mb-4">
-                No hay productos en el carrito
-              </h1>
-            </div>
-          )}
-        </Grid.Container>
+    <div className="w-full h-max flex flex-col items-center justify-center ">
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <Text h2 className="text-center text-gray-800 text-3xl">
+          Carrito de compras
+        </Text>
       </div>
-      <div className="w-full h-1/3 flex flex-col items-center justify-center">
+      <div
+        className="flex flex-col items-center bg-slate-200 mt-4 border-2 border-black justify-center w-full md:w-2/6 lg:2/6 xl:w-2/6
+      2xl:w-2/6 3xl:w-2/6 4xl:w-2/6 rounded-lg h-full"
+      >
+        {(cart &&
+          cart.length > 0 &&
+          cart.map((product) => (
+            <CartItem key={product.id} product={product} />
+          ))) || (
+          <Text h3 className="text-center text-gray-800 text-2xl">
+            No hay productos en el carrito
+          </Text>
+        )}
+      </div>
+      <div className="flex flex-col items-center justify-center w-full h-full">
         <button
           className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:scale-110 border-green-600"
           onClick={() => setShowModal(true)}
@@ -65,6 +56,13 @@ export default function CartContainer() {
           {getTotal() > 0
             ? `Confirmar pedido $${getTotal()}`
             : "Confirmar pedido"}
+        </button>
+        <button
+          className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
+          onClick={handleClearCart}
+          disabled={!cart || cart.length === 0}
+        >
+          Vaciar carrito
         </button>
       </div>
       <Modal
@@ -75,17 +73,8 @@ export default function CartContainer() {
         width="400px"
         height="100%"
       >
-        <Checkout />
+        <Checkout handleShowModal={handleShowModal} />
       </Modal>
-      <div className="w-full h-1/3 flex flex-col items-center justify-center">
-        <button
-          className="w-1/2 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
-          onClick={handleClearCart}
-          disabled={!cart || cart.length === 0}
-        >
-          Vaciar carrito
-        </button>
-      </div>
     </div>
   );
 }

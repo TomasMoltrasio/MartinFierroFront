@@ -1,19 +1,19 @@
 import { useContext, useState, useEffect } from "react";
 import CartContext from "context/CartContext";
 import { sendWhatsappMessage } from "services/checkout";
-import { Input, Radio, Textarea } from "@nextui-org/react";
+import { Input, Radio, Textarea, Loading } from "@nextui-org/react";
 import getOrderTime from "services/orderTime";
 
-export default function Checkout() {
-  const { state } = useContext(CartContext);
+export default function Checkout({ handleShowModal }) {
+  const { state, clearCart } = useContext(CartContext);
   const { cart } = state;
   const [orderTime, setOrderTime] = useState([]);
   const [takeAway, setTakeAway] = useState(false);
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [note, setNote] = useState("");
   const [selectedOrderTime, setSelectedOrderTime] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setOrderTime(getOrderTime());
@@ -34,16 +34,18 @@ export default function Checkout() {
   };
 
   const handleSendWhatsappMessage = async () => {
+    setLoading(true);
     const data = {
       name,
-      phone,
       address,
       note,
       cart,
       selectedOrderTime,
     };
     const { url } = await sendWhatsappMessage(data);
-    window.open(url, "_blank");
+    clearCart();
+    handleShowModal();
+    window.open(url);
   };
 
   return (
@@ -60,14 +62,6 @@ export default function Checkout() {
             size="md"
             underlined
             onChange={(e) => setName(e.target.value)}
-          />
-          <Input
-            placeholder="Teléfono"
-            type="text"
-            size="md"
-            width="100%"
-            underlined
-            onChange={(e) => setPhone(e.target.value)}
           />
           <Textarea
             placeholder="Comentarios de la orden"
@@ -127,14 +121,18 @@ export default function Checkout() {
             onClick={handleSendWhatsappMessage}
             disabled={
               !name ||
-              !phone ||
               !selectedOrderTime ||
               !cart ||
               (takeAway === true && !address) ||
-              selectedOrderTime === ""
+              selectedOrderTime === "" ||
+              loading
             }
           >
-            {`Confirmar pedido $${getTotal()}`}
+            {loading ? (
+              <Loading type="points" />
+            ) : (
+              `Confirmar pedido $${getTotal()}`
+            )}
           </button>
         </div>
       </div>

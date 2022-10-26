@@ -11,7 +11,9 @@ export default function CardDish({ product }) {
 
   return (
     <Card
-      className="shadow-lg shadow-slate-600 border-2 border-slate-600"
+      isPressable
+      isHoverable
+      className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 hover:scale-105"
       css={{
         w: "80%",
         h: "300px",
@@ -22,6 +24,7 @@ export default function CardDish({ product }) {
         "@3xl": { w: "30%", h: "300px" },
         "@4xl": { w: "30%", h: "300px" },
       }}
+      onPress={() => setShowModal(true)}
     >
       <Modal
         open={showModal}
