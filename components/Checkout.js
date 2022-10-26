@@ -19,6 +19,10 @@ export default function Checkout({ handleShowModal }) {
     setOrderTime(getOrderTime());
   }, []);
 
+  const isMobile = () => {
+    return window.innerWidth <= 768;
+  };
+
   const getTotal = () => {
     if (cart && cart.length > 0) {
       return cart.reduce((acc, product) => {
@@ -45,7 +49,11 @@ export default function Checkout({ handleShowModal }) {
     const { url } = await sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
-    window.open(url);
+    if (isMobile()) {
+      window.open(`https://web.whatsapp.com/${url}`, "_blank");
+    } else {
+      window.open(`whatsapp://${url}`, "_blank");
+    }
   };
 
   return (
