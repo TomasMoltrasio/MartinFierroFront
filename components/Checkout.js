@@ -1,10 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import CartContext from "context/CartContext";
 import { sendWhatsappMessage } from "services/checkout";
-import { Input, Radio, Textarea, Loading } from "@nextui-org/react";
+import { Input, Radio, Textarea, Loading, Badge } from "@nextui-org/react";
 import getOrderTime from "services/orderTime";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 export default function Checkout({ handleShowModal }) {
   const router = useRouter();
@@ -69,6 +68,7 @@ export default function Checkout({ handleShowModal }) {
             size="md"
             underlined
             onChange={(e) => setName(e.target.value)}
+            helperText={name.length > 0 ? "" : "Requerido"}
           />
           <Textarea
             placeholder="Comentarios de la orden"
@@ -96,6 +96,7 @@ export default function Checkout({ handleShowModal }) {
               width="100%"
               underlined
               onChange={(e) => setAddress(e.target.value)}
+              helperText={address.length > 0 ? "" : "Requerido"}
             />
           ) : null}
         </div>

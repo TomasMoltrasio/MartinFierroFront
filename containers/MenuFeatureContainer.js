@@ -2,7 +2,7 @@ import { Grid } from "@nextui-org/react";
 import CardFeature from "components/CardFeature";
 import Head from "next/head";
 
-export default function MenuFeatureContainer({ products }) {
+export default function MenuFeatureContainer() {
   const feature = {
     1: {
       title: "Meganesas",
@@ -54,7 +54,7 @@ export default function MenuFeatureContainer({ products }) {
       <Grid.Container gap={2} justify="center">
         {Object.keys(feature).map((key) => (
           <Grid xs={12} sm={6} md={4} lg={3} key={key}>
-            <CardFeature products={products} feature={feature[key]} />
+            <CardFeature feature={feature[key]} />
           </Grid>
         ))}
       </Grid.Container>

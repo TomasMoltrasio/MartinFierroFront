@@ -1,5 +1,6 @@
 import { Grid } from "@nextui-org/react";
 import CardMenu from "components/CardMenu";
+import CardEmpanada from "components/CardEmpanada";
 import NextLink from "next/link";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Head from "next/head";
@@ -23,15 +24,29 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
         </div>
         <Grid.Container gap={2}>
           {products.map((product) => (
-            <Grid
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              key={`productos-${nameId}-${product._id}`}
-            >
-              <CardMenu product={product} nameId={nameId} />
-            </Grid>
+            <>
+              {product.name !== "Empanadas" ? (
+                <Grid
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={`productos-${nameId}-${product._id}`}
+                >
+                  <CardMenu product={product} nameId={nameId} />
+                </Grid>
+              ) : (
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                  key={`productos-${nameId}-${product._id}`}
+                >
+                  <CardEmpanada product={product} />
+                </Grid>
+              )}
+            </>
           ))}
         </Grid.Container>
       </div>

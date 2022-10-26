@@ -50,7 +50,7 @@ export default function SalonContainer() {
         "
         >
           <a
-            href="tel:+5492241527444"
+            href="https://wa.me/5492241527444"
             target="_blank"
             rel="noreferrer"
             className="w-max"
