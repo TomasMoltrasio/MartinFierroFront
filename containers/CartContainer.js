@@ -42,7 +42,7 @@ export default function CartContainer() {
             {cart &&
               cart.length > 0 &&
               cart.map((product) => (
-                <CartItem key={product.id} product={product} />
+                <CartItem key={`cart-item-{product._id}`} product={product} />
               ))}
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">

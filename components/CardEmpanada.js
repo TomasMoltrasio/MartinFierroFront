@@ -71,7 +71,7 @@ export default function CardEmpanada({ product, handleShowModal }) {
           {optionTaste.map((opTaste) => (
             <>
               <div
-                key={opTaste.value}
+                key={`iption-taste-${opTaste.value}`}
                 className="
                 w-full h-max flex flex-row items-center justify-between gap-2 text-sm
             "

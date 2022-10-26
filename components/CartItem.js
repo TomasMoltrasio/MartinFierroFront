@@ -9,6 +9,19 @@ export default function CartItem({ product }) {
     removeProduct(product);
   };
 
+  const getTotal = () => {
+    if (product.category === "Empanadas") {
+      let docenas = Math.floor(product.quantity / 12);
+      let unidades = product.quantity % 12;
+      let priceDocena = product.price * 12 - 100;
+      let priceUnidad = product.price;
+      let total = docenas * priceDocena + unidades * priceUnidad;
+      return total;
+    } else {
+      return product.price * product.quantity;
+    }
+  };
+
   const showQuantity = () => {
     let quantity = 0;
     if (product.category === "Empanadas") {
@@ -40,7 +53,7 @@ export default function CartItem({ product }) {
       </div>
       <div className="flex flex-col items-center justify-center w-2/6 h-full">
         <p className="text-center text-gray-800 text-base font-semibold">
-          {`$${product.price * showQuantity()}`}
+          {`$${getTotal()}`}
         </p>
       </div>
       <div className="flex flex-col items-center justify-center w-max h-full pr-2">
