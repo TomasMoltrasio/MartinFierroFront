@@ -2,6 +2,7 @@ import { createProduct } from "services/products";
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import Swal from "sweetalert2";
+import validated from "services/validate";
 
 export default function CreateProduct({ handleShowModal }) {
   const [product, setProduct] = useState({
@@ -31,7 +32,7 @@ export default function CreateProduct({ handleShowModal }) {
     const response = await createProduct(newProduct);
     handleShowModal();
     if (response) {
-      fetch("/api/revalidateMenu").finally(() => {
+      await validated("/menu").finally(() => {
         Swal.fire({
           title: "Producto creado",
           icon: "success",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProductsByCategory, changeActiveDay } from "services/products";
 import Swal from "sweetalert2";
+import validated from "services/validate";
 
 export default function ChangeDay({ handleShowModalDay }) {
   const [products, setProducts] = useState([]);
@@ -22,7 +23,7 @@ export default function ChangeDay({ handleShowModalDay }) {
         title: "¡El plato del día ha sido cambiado!",
         showConfirmButton: true,
       });
-      await fetch(`/api/revalidate?secret=${secret}`).finally(() => {
+      await validated("/").finally(() => {
         Swal.fire({
           icon: "success",
           title: "¡El plato del día ha sido cambiado!",

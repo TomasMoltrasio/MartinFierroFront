@@ -42,31 +42,7 @@ export default function SalonContainer() {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-start">
-      <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-max my-4 px-2 flex flex-row items-center justify-between">
-        <h1 className="text-3xl font-bold mb-2">Nuestro salón</h1>
-        <div
-          className="
-            flex flex-row items-center justify-center gap-2 p-1 rounded-xl border-2 px-4 border-black hover:scale-105
-        "
-        >
-          <a
-            href="https://wa.me/5492241527444"
-            target="_blank"
-            rel="noreferrer"
-            className="w-max"
-          >
-            <h2 className="text-xl font-normal text-center">Hace tu reserva</h2>
-          </a>
-          <a
-            href="https://wa.me/5492241527444"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <BsWhatsapp size={24} />
-          </a>
-        </div>
-      </div>
-      <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-4/5 flex flex-col items-center relative justify-center">
+      <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-4/5 mt-4 flex flex-col items-center relative justify-center">
         <Image
           src={images[index]}
           alt="Salon"
@@ -115,6 +91,29 @@ export default function SalonContainer() {
             "
           />
         </button>
+      </div>
+      <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-max my-4 px-2 flex flex-row items-center justify-between">
+        <div
+          className="
+            flex flex-row w-full items-center justify-center gap-2 p-1 rounded-xl border-2 px-4 border-black hover:scale-105"
+        >
+          <a
+            href="https://wa.me/5492241527444"
+            target="_blank"
+            rel="noreferrer"
+            className="w-max"
+          >
+            <h2 className="text-xl font-normal text-center">Hace tu reserva</h2>
+          </a>
+          <a
+            href="https://wa.me/5492241527444"
+            target="_blank"
+            rel="noreferrer"
+            className="w-max"
+          >
+            <BsWhatsapp size={24} />
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function Home({ product }) {
 }
 
 export async function getStaticProps() {
-  const product = await getActiveDay();
+  const product = (await getActiveDay()) || null;
 
   return {
     props: {

@@ -6,7 +6,7 @@ export default function Layout({ children }) {
     <div className="h-screen min-h-screen w-screen flex-auto flex flex-col items-center justify-between">
       <Header />
       <main
-        className="flex flex-col h-full w-full"
+        className="flex flex-col w-full"
         style={{
           height: "max-content",
         }}

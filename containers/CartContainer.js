@@ -28,13 +28,13 @@ export default function CartContainer() {
 
   return (
     <div className="w-full h-max flex flex-col items-center justify-start">
-      <div className="flex flex-col items-center justify-center w-full h-full mt-4">
-        <Text h2 className="text-center text-gray-800 text-3xl">
-          Carrito de compras
-        </Text>
-      </div>
       {cart && cart.length > 0 ? (
         <>
+          <div className="flex flex-col items-center justify-center w-full h-full mt-4">
+            <Text h2 className="text-center text-gray-800 text-3xl">
+              Carrito de compras
+            </Text>
+          </div>
           <div
             className="flex flex-col items-center bg-slate-200 mt-4 border-2 border-black justify-center w-full md:w-2/6 lg:2/6 xl:w-2/6
       2xl:w-2/6 3xl:w-2/6 4xl:w-2/6 rounded-lg h-full"

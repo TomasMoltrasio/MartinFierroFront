@@ -30,50 +30,65 @@ export default function Footer() {
           href="https://goo.gl/maps/fga2jDukc3buAU438"
           target="_blank"
           rel="noreferrer"
+          className="flex flex-row items-center justify-center gap-2 p-1 rounded-xl hover:scale-105"
         >
           <BsShop size={24} />
+          <Text
+            hideIn="xs"
+            className="text-md font-normal text-center leading-none"
+            h3
+          >
+            Alvear 679
+          </Text>
         </a>
-        <Text
-          hideIn="xs"
-          className="text-md font-normal text-center leading-none"
-          h3
-        >
-          Alvear 679
-        </Text>
+
         <a
           href="https://www.instagram.com/martinfierrocomidacasera/"
           target="_blank"
           rel="noreferrer"
+          className="flex flex-row items-center justify-center gap-2 p-1 rounded-xl hover:scale-105"
         >
           <BsInstagram size={24} />
+          <Text
+            hideIn="xs"
+            className="text-md font-normal text-center leading-none"
+            h3
+          >
+            @martinfierrocomidacasera
+          </Text>
         </a>
-        <Text
-          hideIn="xs"
-          className="text-md font-normal text-center leading-none"
-          h3
+
+        <a
+          href="https://wa.me/5492241527444"
+          target="_blank"
+          rel="noreferrer"
+          className="flex flex-row items-center justify-center gap-2 p-1 rounded-xl hover:scale-105"
         >
-          @martinfierrocomidacasera
-        </Text>
-        <a href="https://wa.me/5492241527444" target="_blank" rel="noreferrer">
           <BsWhatsapp size={24} />
+          <Text
+            hideIn="xs"
+            className="text-md font-normal text-center leading-none"
+            h3
+          >
+            2241527444
+          </Text>
         </a>
-        <Text
-          hideIn="xs"
-          className="text-md font-normal text-center leading-none"
-          h3
+
+        <a
+          href="tel:+5492241527444"
+          target="_blank"
+          rel="noreferrer"
+          className="flex flex-row items-center justify-center gap-2 p-1 rounded-xl  hover:scale-105"
         >
-          2241527444
-        </Text>
-        <a href="tel:+5492241527444" target="_blank" rel="noreferrer">
           <BsTelephone size={24} />
+          <Text
+            hideIn="xs"
+            className="text-md font-normal text-center leading-none"
+            h3
+          >
+            2241527444
+          </Text>
         </a>
-        <Text
-          hideIn="xs"
-          className="text-md font-normal text-center leading-none"
-          h3
-        >
-          2241527444
-        </Text>
       </div>
     </footer>
   );
