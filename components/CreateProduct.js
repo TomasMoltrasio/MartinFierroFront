@@ -31,10 +31,14 @@ export default function CreateProduct({ handleShowModal }) {
     const response = await createProduct(newProduct);
     handleShowModal();
     if (response) {
-      Swal.fire({
-        title: "Producto creado",
-        icon: "success",
-        confirmButtonText: "Ok",
+      fetch("/api/revalidateMenu").finally(() => {
+        Swal.fire({
+          title: "Producto creado",
+          icon: "success",
+          confirmButtonText: "Ok",
+        }).then(() => {
+          window.location.reload();
+        });
       });
     } else {
       Swal.fire(
@@ -129,7 +133,13 @@ export default function CreateProduct({ handleShowModal }) {
         />
         <button
           className="
-        w-3/12
+          w-full
+
+          sm:w-3/12
+          xl:w-3/12
+          lg:w-3/12
+          md:w-3/12
+          2xl:w-3/12
         h-10
         bg-lime-500
         text-white

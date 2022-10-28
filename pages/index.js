@@ -13,7 +13,7 @@ export default function Home({ product }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const product = await getActiveDay();
 
   return {

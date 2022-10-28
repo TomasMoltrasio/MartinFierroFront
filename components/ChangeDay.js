@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 export default function ChangeDay({ handleShowModalDay }) {
   const [products, setProducts] = useState([]);
+  const secret = process.env.MY_SECRET_TOKEN;
 
   useEffect(() => {
     const getProducts = async () => {
@@ -14,16 +15,21 @@ export default function ChangeDay({ handleShowModalDay }) {
   }, []);
 
   const selectDay = async (e) => {
-    await changeActiveDay(e.target.value).finally(() => {
+    await changeActiveDay(e.target.value).finally(async () => {
       handleShowModalDay();
       Swal.fire({
         icon: "success",
         title: "¡El plato del día ha sido cambiado!",
         showConfirmButton: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
+      });
+      await fetch(`/api/revalidate?secret=${secret}`).finally(() => {
+        Swal.fire({
+          icon: "success",
+          title: "¡El plato del día ha sido cambiado!",
+          showConfirmButton: true,
+        }).then(() => {
           window.location.reload();
-        }
+        });
       });
     });
   };

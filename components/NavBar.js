@@ -235,8 +235,8 @@ export default function NavBar() {
         onClose={handleShowModal}
         closeButton
         blur
-        width="50%"
-        height="50%"
+        width="100%"
+        height="100%"
       >
         <CreateProduct handleShowModal={handleShowModal} />
       </Modal>
@@ -245,8 +245,8 @@ export default function NavBar() {
         onClose={handleShowModalDay}
         closeButton
         blur
-        width="50%"
-        height="50%"
+        width="100%"
+        height="100%"
       >
         <ChangeDay handleShowModalDay={handleShowModalDay} />
       </Modal>
