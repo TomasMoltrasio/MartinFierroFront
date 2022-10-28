@@ -3,9 +3,16 @@ import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
-    <div className="flex flex-col items-center justify-between h-screen min-h-screen w-screen">
+    <div className="h-screen min-h-screen w-screen flex-auto flex flex-col items-center justify-between">
       <Header />
-      <main className="flex flex-col h-full w-full">{children}</main>
+      <main
+        className="flex flex-col h-full w-full"
+        style={{
+          height: "max-content",
+        }}
+      >
+        {children}
+      </main>
       <Footer />
     </div>
   );

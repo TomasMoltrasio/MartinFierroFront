@@ -1,6 +1,6 @@
 import HomeContainer from "containers/HomeContainer";
 import Head from "next/head";
-import { getProduct } from "services/products";
+import { getActiveDay } from "services/products";
 
 export default function Home({ product }) {
   return (
@@ -14,7 +14,7 @@ export default function Home({ product }) {
 }
 
 export async function getStaticProps() {
-  const product = await getProduct("63521af14ac3d867109dcd75");
+  const product = await getActiveDay();
 
   return {
     props: {

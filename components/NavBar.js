@@ -1,15 +1,30 @@
 import NextLink from "next/link";
-import { Navbar, Link, Dropdown, Image, Badge } from "@nextui-org/react";
+import {
+  Navbar,
+  Link,
+  Dropdown,
+  Image,
+  Badge,
+  Avatar,
+  Modal,
+} from "@nextui-org/react";
 import { HiOutlineMenu } from "react-icons/hi";
 import { ImCart } from "react-icons/im";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
+import UserContext from "context/UserContext";
+import { MdOutlineAddCircle, MdOutlineChangeCircle } from "react-icons/md";
+import CreateProduct from "./CreateProduct";
+import ChangeDay from "./ChangeDay";
 
 export default function NavBar() {
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+  const [showModalDay, setShowModalDay] = useState(false);
   const { state } = useContext(CartContext);
   const { cart } = state;
+  const { user, logOut } = useContext(UserContext);
   const cartCount =
     cart && cart.length > 0
       ? cart.reduce((acc, product) => acc + product.quantity, 0)
@@ -33,6 +48,14 @@ export default function NavBar() {
       link: "/contacto",
     },
   ];
+
+  const handleShowModal = () => {
+    setShowModal(false);
+  };
+
+  const handleShowModalDay = () => {
+    setShowModalDay(false);
+  };
 
   return (
     <Navbar
@@ -95,25 +118,95 @@ export default function NavBar() {
           </Navbar.Link>
         </NextLink>
       </Navbar.Content>
-      <NextLink href="/cart">
-        <Navbar.Content
-          css={{
-            "@xs": {
-              w: "12%",
-              jc: "center",
-            },
-          }}
-        >
-          <Badge
-            content={cartCount}
-            isInvisible={cartCount === 0 ? true : false}
-            color="error"
-            className="cursor-pointer"
+      {user && user.token ? (
+        <>
+          <Navbar.Content
+            css={{
+              "@xs": {
+                w: "12%",
+                jc: "flex-end",
+              },
+            }}
           >
-            <ImCart size={30} className="cursor-pointer" />
-          </Badge>
-        </Navbar.Content>
-      </NextLink>
+            <Dropdown placement="bottom-right">
+              <Navbar.Item>
+                <Dropdown.Trigger>
+                  <Avatar
+                    bordered
+                    as="button"
+                    color="primary"
+                    size="md"
+                    src="/LogoMartinFierro.svg"
+                  />
+                </Dropdown.Trigger>
+              </Navbar.Item>
+              <Dropdown.Menu
+                aria-label="User menu actions"
+                color="secondary"
+                onAction={(actionKey) => {
+                  switch (actionKey) {
+                    case "logout":
+                      logOut();
+                      break;
+                    case "cart":
+                      router.push("/cart");
+                      break;
+                    case "add":
+                      setShowModal(true);
+                      break;
+                    case "change":
+                      setShowModalDay(true);
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+              >
+                <Dropdown.Item icon={<ImCart size={20} />} key="cart">
+                  Carrito
+                </Dropdown.Item>
+                <Dropdown.Item
+                  icon={<MdOutlineAddCircle size={20} />}
+                  key="add"
+                >
+                  Agregar producto
+                </Dropdown.Item>
+                <Dropdown.Item
+                  icon={<MdOutlineChangeCircle size={20} />}
+                  key="change"
+                >
+                  Cambiar plato del día
+                </Dropdown.Item>
+                <Dropdown.Item key="logout" withDivider color="error">
+                  Cerrar sesión
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Navbar.Content>
+        </>
+      ) : (
+        <>
+          <NextLink href="/cart">
+            <Navbar.Content
+              css={{
+                "@xs": {
+                  w: "12%",
+                  jc: "center",
+                },
+              }}
+            >
+              <Badge
+                content={cartCount}
+                isInvisible={cartCount === 0 ? true : false}
+                color="error"
+                className="cursor-pointer"
+              >
+                <ImCart size={30} className="cursor-pointer" />
+              </Badge>
+            </Navbar.Content>
+          </NextLink>
+        </>
+      )}
       <Navbar.Collapse disableAnimation>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem
@@ -137,6 +230,26 @@ export default function NavBar() {
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
+      <Modal
+        open={showModal}
+        onClose={handleShowModal}
+        closeButton
+        blur
+        width="50%"
+        height="50%"
+      >
+        <CreateProduct handleShowModal={handleShowModal} />
+      </Modal>
+      <Modal
+        open={showModalDay}
+        onClose={handleShowModalDay}
+        closeButton
+        blur
+        width="50%"
+        height="50%"
+      >
+        <ChangeDay handleShowModalDay={handleShowModalDay} />
+      </Modal>
     </Navbar>
   );
 }

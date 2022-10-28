@@ -6,7 +6,6 @@ export default function Salon() {
     <>
       <Head>
         <title>Salon</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <SalonContainer />
     </>

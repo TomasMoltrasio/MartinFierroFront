@@ -1,15 +1,8 @@
 import NextLink from "next/link";
-import { useState } from "react";
-import { Text, Card, Modal } from "@nextui-org/react";
+import { Text, Card } from "@nextui-org/react";
 import Head from "next/head";
 
 export default function Menu({ feature }) {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleShowModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <>
       <Head>

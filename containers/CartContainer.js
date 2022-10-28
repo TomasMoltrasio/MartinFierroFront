@@ -27,8 +27,8 @@ export default function CartContainer() {
   };
 
   return (
-    <div className="w-full h-max flex flex-col items-center justify-center ">
-      <div className="flex flex-col items-center justify-center w-full h-full">
+    <div className="w-full h-max flex flex-col items-center justify-start">
+      <div className="flex flex-col items-center justify-center w-full h-full mt-4">
         <Text h2 className="text-center text-gray-800 text-3xl">
           Carrito de compras
         </Text>
@@ -42,7 +42,10 @@ export default function CartContainer() {
             {cart &&
               cart.length > 0 &&
               cart.map((product) => (
-                <CartItem key={`cart-item-{product._id}`} product={product} />
+                <CartItem
+                  key={`cart-item-${product._id}` + Math.random()}
+                  product={product}
+                />
               ))}
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">

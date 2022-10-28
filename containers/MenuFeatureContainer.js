@@ -51,13 +51,21 @@ export default function MenuFeatureContainer() {
       <Head>
         <title>Menu</title>
       </Head>
-      <Grid.Container gap={2} justify="center">
-        {Object.keys(feature).map((key) => (
-          <Grid xs={12} sm={6} md={4} lg={3} key={key}>
-            <CardFeature feature={feature[key]} />
-          </Grid>
-        ))}
-      </Grid.Container>
+      <div className="flex flex-col flex-wrap items-center justify-center w-full h-max">
+        <Grid.Container
+          gap={2}
+          justify="start"
+          css={{
+            height: "100%",
+          }}
+        >
+          {Object.keys(feature).map((key) => (
+            <Grid xs={12} sm={6} md={4} lg={3} key={`feature-key-${key}`}>
+              <CardFeature feature={feature[key]} />
+            </Grid>
+          ))}
+        </Grid.Container>
+      </div>
     </>
   );
 }

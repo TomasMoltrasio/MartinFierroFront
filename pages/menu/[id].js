@@ -1,6 +1,5 @@
 import { getProductsByCategory } from "services/products";
 import MenuContainer from "containers/MenuContainer";
-import Head from "next/head";
 
 export default function MenuSingle({ products, nameId }) {
   return (

@@ -127,6 +127,7 @@ export default function CardEmpanada({ product }) {
           className="w-2/3 h-max flex flex-row items-center justify-center
           bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-4 mb-2 rounded disabled:bg-red-500"
           onClick={handleAddProduct}
+          disabled={quantity === 0}
         >
           {`Agregar al carrito $${getTotal()}`}
           <BsCartPlus className="ml-2" />

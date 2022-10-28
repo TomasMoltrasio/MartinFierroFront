@@ -6,7 +6,6 @@ export default function Contacto() {
     <>
       <Head>
         <title>Contacto</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <ContactContainer />
     </>

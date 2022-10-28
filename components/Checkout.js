@@ -68,7 +68,7 @@ export default function Checkout({ handleShowModal }) {
             size="md"
             underlined
             onChange={(e) => setName(e.target.value)}
-            helperText={name.length > 0 ? "" : "Requerido"}
+            required
           />
           <Textarea
             placeholder="Comentarios de la orden"
@@ -76,6 +76,7 @@ export default function Checkout({ handleShowModal }) {
             size="md"
             width="100%"
             underlined
+            required
             onChange={(e) => setNote(e.target.value)}
           />
           <Radio.Group
@@ -95,8 +96,8 @@ export default function Checkout({ handleShowModal }) {
               size="md"
               width="100%"
               underlined
+              required
               onChange={(e) => setAddress(e.target.value)}
-              helperText={address.length > 0 ? "" : "Requerido"}
             />
           ) : null}
         </div>

@@ -1,4 +1,9 @@
 import endPoints from "./api";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+
+const user = cookies.get("user");
 
 const getAllProducts = async () => {
   try {
@@ -38,9 +43,36 @@ const updateProduct = async (id, product) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify(product),
     });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const changeActiveDay = async (id) => {
+  try {
+    const response = await fetch(endPoints.products.changeDay(id), {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getActiveDay = async () => {
+  try {
+    const response = await fetch(endPoints.products.getActiveDay);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -52,6 +84,10 @@ const deleteProduct = async (id) => {
   try {
     const response = await fetch(endPoints.products.deleteProduct(id), {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const data = await response.json();
     return data;
@@ -66,6 +102,7 @@ const createProduct = async (product) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify(product),
     });
@@ -83,4 +120,6 @@ export {
   updateProduct,
   deleteProduct,
   createProduct,
+  changeActiveDay,
+  getActiveDay,
 };
