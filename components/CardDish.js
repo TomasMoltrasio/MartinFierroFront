@@ -40,7 +40,7 @@ export default function CardDish({ product }) {
         <Row justify="flex-end">
           <Button
             className="hover:scale-125"
-            auto
+            auto={true}
             onClick={() => setShowModal(true)}
           >
             <Image src="/AddCart.svg" alt="AddCart" width={40} height={40} />

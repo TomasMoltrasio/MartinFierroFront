@@ -22,7 +22,7 @@ export default function CardMenu({ product, nameId }) {
           <Button
             className="hover:scale-125"
             onClick={() => setShowModal(true)}
-            auto
+            auto={true}
           >
             <Image src="/AddCart.svg" alt="AddCart" width={40} height={40} />
           </Button>

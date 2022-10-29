@@ -31,7 +31,7 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
                   sm={6}
                   md={4}
                   lg={3}
-                  key={`productos-${nameId}-${product._id}`}
+                  key={`productos-${product._id}`}
                 >
                   <CardMenu product={product} nameId={nameId} />
                 </Grid>
@@ -41,7 +41,7 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
                   sm={12}
                   md={12}
                   lg={12}
-                  key={`empanadas-${nameId}-${product._id}`}
+                  key={`empanadas-${product._id}`}
                 >
                   <CardEmpanada product={product} />
                 </Grid>

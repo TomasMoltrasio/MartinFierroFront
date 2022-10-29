@@ -10,20 +10,13 @@ export default function Footer() {
           href="https://www.linkedin.com/in/tomas-moltrasio-5193461b8/"
           target="_blank"
           rel="noreferrer"
+          className="flex flex-row items-center justify-center gap-2 p-1 rounded-xl hover:scale-105"
         >
           <Text className="text-sm font-normal text-center mb-1 pl-2" h3>
             Made by
           </Text>
+          <FcTrademark />
         </a>
-        <FcTrademark
-          className="ml-2 cursor-pointer"
-          onClick={() =>
-            window.open(
-              "https://www.linkedin.com/in/tomas-moltrasio-5193461b8/",
-              "_blank"
-            )
-          }
-        />
       </div>
       <div className="flex flex-row items-end gap-8 md:gap-3 xl:gap-3 2xl:gap-3 3xl:gap-3 justify-end w-max mr-6">
         <a

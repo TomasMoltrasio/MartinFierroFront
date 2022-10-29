@@ -46,8 +46,8 @@ export default function SalonContainer() {
         <Image
           src={images[index]}
           alt="Salon"
+          height="540px"
           width="100%"
-          height="100%"
           objectFit="cover"
           className="rounded-2xl shadow-2xl"
         />
@@ -95,22 +95,15 @@ export default function SalonContainer() {
       <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-max my-4 px-2 flex flex-row items-center justify-between">
         <div
           className="
-            flex flex-row w-full items-center justify-center gap-2 p-1 rounded-xl border-2 px-4 border-black hover:scale-105"
+            flex flex-row w-full items-center justify-center gap-2 p-1 rounded-xl border-2 px-4 border-black hover:scale-105 hover:border-lime-500 hover:text-lime-500 transition duration-300 ease-in-out hover:font-semibold"
         >
           <a
-            href="https://wa.me/5492241527444"
+            href="https://api.whatsapp.com/send?phone=+5492241527444&text=Hola,%20queria%20reservar%20una%20mesa"
             target="_blank"
             rel="noreferrer"
-            className="w-max"
+            className="w-full flex flex-row items-center justify-center gap-2"
           >
             <h2 className="text-xl font-normal text-center">Hace tu reserva</h2>
-          </a>
-          <a
-            href="https://wa.me/5492241527444"
-            target="_blank"
-            rel="noreferrer"
-            className="w-max"
-          >
             <BsWhatsapp size={24} />
           </a>
         </div>

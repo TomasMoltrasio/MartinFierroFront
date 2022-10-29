@@ -168,7 +168,6 @@ export default function ProductToCart({ product, handleShowModal }) {
 
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <button
-          auto
           className="w-1/2 h-1/2 flex flex-row items-center justify-center
           bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500"
           onClick={handleAddProduct}

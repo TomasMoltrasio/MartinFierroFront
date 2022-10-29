@@ -70,51 +70,49 @@ export default function CardEmpanada({ product }) {
       </div>
       <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 3xl:w-2/5 border-2 border-black rounded-bl-md rounded-br-md h-max flex flex-col items-center justify-between px-4">
         {optionTaste.map((opTaste) => (
-          <>
-            <div
-              key={`iption-taste-${opTaste.value}`}
-              className="w-full h-max flex flex-row items-center justify-between gap-2 text-sm"
-            >
-              <div>
-                <p className="text-black font-semibold ml-4">{opTaste.name}</p>
-              </div>
-              <div className="w-1/2 h-full flex flex-row items-center justify-end gap-4 mr-4">
-                <Button.Group
-                  size="xs"
-                  color={taste[opTaste.value] === 0 ? "#000" : "success"}
-                  rounded
-                >
-                  <Button
-                    bordered
-                    auto
-                    onClick={handleAddTaste}
-                    name={opTaste.value}
-                    value={-1}
-                    disabled={taste[opTaste.value] === 0}
-                    className="disabled:hidden"
-                  >
-                    -
-                  </Button>
-                  <Button
-                    bordered
-                    auto
-                    className="disabled:block text-black font-normal text-base"
-                  >
-                    {taste[opTaste.value]}
-                  </Button>
-                  <Button
-                    bordered
-                    auto
-                    onClick={handleAddTaste}
-                    name={opTaste.value}
-                    value={1}
-                  >
-                    +
-                  </Button>
-                </Button.Group>
-              </div>
+          <div
+            key={`iption-taste-${opTaste.value}`}
+            className="w-full h-max flex flex-row items-center justify-between gap-2 text-sm"
+          >
+            <div>
+              <p className="text-black font-semibold ml-4">{opTaste.name}</p>
             </div>
-          </>
+            <div className="w-1/2 h-full flex flex-row items-center justify-end gap-4 mr-4">
+              <Button.Group
+                size="xs"
+                color={taste[opTaste.value] === 0 ? "#000" : "success"}
+                rounded
+              >
+                <Button
+                  bordered
+                  auto={true}
+                  onClick={handleAddTaste}
+                  name={opTaste.value}
+                  value={-1}
+                  disabled={taste[opTaste.value] === 0}
+                  className="disabled:hidden"
+                >
+                  -
+                </Button>
+                <Button
+                  bordered
+                  auto={true}
+                  className="disabled:block text-black font-normal text-base"
+                >
+                  {taste[opTaste.value]}
+                </Button>
+                <Button
+                  bordered
+                  auto={true}
+                  onClick={handleAddTaste}
+                  name={opTaste.value}
+                  value={1}
+                >
+                  +
+                </Button>
+              </Button.Group>
+            </div>
+          </div>
         ))}
       </div>
       <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 3xl:w-2/5 h-max flex flex-row items-center justify-between">
@@ -123,7 +121,6 @@ export default function CardEmpanada({ product }) {
       </div>
       <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 3xl:w-2/5 h-max flex flex-col items-center justify-center">
         <button
-          auto
           className="w-2/3 h-max flex flex-row items-center justify-center
           bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-4 mb-2 rounded disabled:bg-red-500"
           onClick={handleAddProduct}

@@ -1,4 +1,4 @@
-import { Text, Button } from "@nextui-org/react";
+import { Text, Button, Image } from "@nextui-org/react";
 import CardDish from "components/CardDish";
 import { MdRestaurantMenu } from "react-icons/md";
 import { useRouter } from "next/router";
