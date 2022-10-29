@@ -1,12 +1,14 @@
 import React from "react";
 import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
-import { Image, Button } from "@nextui-org/react";
+import { Image, Button, Radio } from "@nextui-org/react";
 import { BsCartPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
 
 export default function CardEmpanada({ product }) {
   const [quantity, setQuantity] = useState(0);
+  const [of, setOf] = useState("fritas");
+  const [date, setDate] = useState(new Date());
   const optionTaste = [
     { name: "Carne", value: "carne" },
     { name: "Pollo", value: "pollo" },
@@ -23,6 +25,7 @@ export default function CardEmpanada({ product }) {
     verdura: 0,
     humita: 0,
   });
+
   const { addProduct } = useContext(CartContext);
 
   const handleAddProduct = () => {
@@ -31,6 +34,7 @@ export default function CardEmpanada({ product }) {
       ...product,
       garnish: taste,
       price: total,
+      of: of,
     };
     addProduct(newProduct, 1);
     Swal.fire({
@@ -115,6 +119,28 @@ export default function CardEmpanada({ product }) {
           </div>
         ))}
       </div>
+      <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 3xl:w-2/5 h-max flex flex-row items-center justify-center px-4">
+        <Radio.Group
+          aria-label="of"
+          value={of}
+          onChange={setOf}
+          color="success"
+          orientation="horizontal"
+          defaultValue="fritas"
+          size="sm"
+        >
+          <Radio value="fritas">Fritas</Radio>
+          <Radio
+            isDisabled={
+              date.getDay() === 0 || date.getDay() === 6 || date.getDay() === 5
+            }
+            value="al horno"
+          >
+            Al horno
+          </Radio>
+        </Radio.Group>
+      </div>
+
       <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 3xl:w-2/5 h-max flex flex-row items-center justify-between">
         <h3 className="font-semibold ml-8">Cantidad de empanadas</h3>
         <h3 className="font-semibold mr-20">{quantity}</h3>

@@ -1,15 +1,5 @@
 import endPoints from "./api";
 
-const getOrderTime = async () => {
-  try {
-    const response = await fetch(endPoints.checkout.getOrderTime);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const sendWhatsappMessage = async (payload) => {
   try {
     const response = await fetch(endPoints.checkout.sendWhatsappMessage, {
@@ -26,4 +16,4 @@ const sendWhatsappMessage = async (payload) => {
   }
 };
 
-export { getOrderTime, sendWhatsappMessage };
+export { sendWhatsappMessage };
