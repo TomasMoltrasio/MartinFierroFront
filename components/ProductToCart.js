@@ -36,6 +36,9 @@ export default function ProductToCart({ product, handleShowModal }) {
     if (e.target.value === "nada") {
       setGarnishPrice(-100);
       setGarnishAdd([]);
+    } else if (e.target.value === "parisienne") {
+      setGarnishPrice(100);
+      setGarnishAdd([]);
     } else {
       setGarnishPrice(0);
     }
@@ -56,7 +59,7 @@ export default function ProductToCart({ product, handleShowModal }) {
         {product.of && product.of.length > 0 ? (
           <select
             onChange={handleAddOf}
-            className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300"
+            className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300 px-2"
           >
             <option value="">Elegir una opción</option>
             {product.of.map((of, index) => (
@@ -69,16 +72,16 @@ export default function ProductToCart({ product, handleShowModal }) {
         {product.garnish && product.garnish.length > 0 ? (
           <select
             onChange={handleAddGarnish}
-            className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300"
+            className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300 px-2"
           >
-            <option value="">Elegir una opción</option>
+            <option value="">Elegir una guarnición</option>
             {product.garnish.map((garnish, index) => (
               <option key={`garnish-option-${index}`} value={garnish}>
                 {garnish.charAt(0).toUpperCase() + garnish.slice(1)}
               </option>
             ))}
             <option value="nada">
-              {product.category !== "Pastas" ? "Sin guarnicion" : "Sin salsa"}
+              {product.category !== "Pastas" ? "Sin guarnición" : "Sin salsa"}
             </option>
           </select>
         ) : null}

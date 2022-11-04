@@ -1,52 +1,78 @@
-import { createProduct } from "services/products";
+import { createProduct, updateProduct } from "services/products";
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import Swal from "sweetalert2";
 import validated from "services/validate";
 
-export default function CreateProduct({ handleShowModal }) {
-  const [product, setProduct] = useState({
-    name: "",
-    price: "",
-    description: "",
-    image: "",
-    category: "",
-    garnish: null,
-    of: null,
-  });
+export default function CreateProduct({
+  product,
+  handleShowModal,
+  edit = false,
+}) {
+  if (!product) {
+    product = {
+      name: "",
+      description: "",
+      price: "",
+      image: "",
+    };
+  }
+
+  const [newProduct, setNewProduct] = useState(product);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, price, description, image, category, garnish, of } = product;
-    const garnishArray = garnish === null ? null : garnish.split(",");
-    const ofArray = of === null ? null : of.split(",");
-    const newProduct = {
+    const { name, price, description, image, category, garnish, of } =
+      newProduct;
+
+    const savedProduct = {
       name,
       price,
       description,
       image,
       category,
-      garnish: garnishArray,
-      of: ofArray,
+      garnish,
+      of,
     };
-    const response = await createProduct(newProduct);
-    handleShowModal();
-    if (response) {
-      await validated("/menu").finally(() => {
-        Swal.fire({
-          title: "Producto creado",
-          icon: "success",
-          confirmButtonText: "Ok",
-        }).then(() => {
-          window.location.reload();
+
+    if (edit) {
+      const res = await updateProduct(product._id, savedProduct);
+      handleShowModal();
+      if (res.status === 200) {
+        await validated("menu").finally(() => {
+          Swal.fire({
+            title: "Producto actualizado",
+            icon: "success",
+            showConfirmButton: true,
+            zIndex: 9990,
+            confirmButtonColor: "#3085d6",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
+          });
         });
-      });
+      }
     } else {
-      Swal.fire(
-        "Error",
-        "Hubo un error cuando se quizo crear el producto",
-        "error"
-      );
+      const response = await createProduct(savedProduct);
+      handleShowModal();
+      if (response) {
+        await validated("/menu").finally(() => {
+          Swal.fire({
+            title: "Producto creado",
+            icon: "success",
+            confirmButtonText: "Ok",
+          }).then(() => {
+            window.location.reload();
+          });
+        });
+      } else {
+        Swal.fire(
+          "Error",
+          "Hubo un error cuando se quizo crear el producto",
+          "error"
+        );
+      }
     }
   };
 
@@ -67,81 +93,90 @@ export default function CreateProduct({ handleShowModal }) {
         border-black
         rounded-lg
         gap-4
-        p-4
-    "
+        p-4"
         onSubmit={(e) => handleSubmit(e)}
       >
         <Input
           placeholder="Nombre"
+          aria-label="Nombre"
           type="text"
-          value={product.name}
+          value={product.name || ""}
           bordered
-          onChange={(e) => setProduct({ ...product, name: e.target.value })}
+          onChange={(e) => setNewProduct({ ...product, name: e.target.value })}
           required
         />
         <Input
           placeholder="Precio"
+          aria-label="Precio"
           bordered
           type="number"
-          value={product.price}
-          onChange={(e) => setProduct({ ...product, price: e.target.value })}
+          value={product.price || 0}
+          onChange={(e) => setNewProduct({ ...product, price: e.target.value })}
           required
         />
         <Input
           placeholder="Descripcion"
+          aria-label="Descripcion"
           bordered
           type="text"
-          value={product.description}
+          value={product.description || ""}
           onChange={(e) =>
-            setProduct({ ...product, description: e.target.value })
+            setNewProduct({ ...product, description: e.target.value })
           }
           required
         />
         <Input
           bordered
+          aria-label="Imagen"
           placeholder="Imagen"
           type="text"
-          value={product.image}
-          onChange={(e) => setProduct({ ...product, image: e.target.value })}
+          value={product.image || ""}
+          onChange={(e) => setNewProduct({ ...product, image: e.target.value })}
           required
         />
         <Input
+          aria-label="Categoria"
           bordered
           placeholder="Categoria"
           type="text"
-          value={product.category}
-          onChange={(e) => setProduct({ ...product, category: e.target.value })}
+          value={product.category || ""}
+          onChange={(e) =>
+            setNewProduct({ ...product, category: e.target.value })
+          }
           required
         />
         <Input
           bordered
           placeholder="Guarnicion"
+          aria-label="Guarnicion"
           type="text"
-          value={product.garnish}
+          value={product.garnish || ""}
           onChange={(e) =>
-            setProduct({
+            setNewProduct({
               ...product,
-              garnish: e.target.value,
+              garnish: e.target.value.split(","),
             })
           }
         />
         <Input
           bordered
           placeholder="Of"
+          aria-label="Of"
           type="text"
-          value={product.of}
-          onChange={(e) => setProduct({ ...product, of: e.target.value })}
+          value={product.of || ""}
+          onChange={(e) =>
+            setNewProduct({ ...product, of: e.target.value.split(",") })
+          }
         />
         <button
           className="
+          flex
           w-full
-
-          sm:w-3/12
           xl:w-3/12
           lg:w-3/12
           md:w-3/12
           2xl:w-3/12
-        h-10
+        h-max
         bg-lime-500
         text-white
         rounded-lg
@@ -152,6 +187,7 @@ export default function CreateProduct({ handleShowModal }) {
         ease-in-out
         "
           type="submit"
+          aria-label="Crear producto"
         >
           Crear producto
         </button>

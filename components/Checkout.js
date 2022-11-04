@@ -64,9 +64,8 @@ export default function Checkout({ handleShowModal }) {
           <Input
             placeholder="Nombre"
             type="text"
-            width="100%"
+            width="90%"
             size="md"
-            underlined
             onChange={(e) => setName(e.target.value)}
             required
           />
@@ -74,8 +73,7 @@ export default function Checkout({ handleShowModal }) {
             placeholder="Comentarios de la orden"
             type="text"
             size="md"
-            width="100%"
-            underlined
+            width="90%"
             required
             onChange={(e) => setNote(e.target.value)}
           />
@@ -94,8 +92,7 @@ export default function Checkout({ handleShowModal }) {
               placeholder="Dirección"
               type="text"
               size="md"
-              width="100%"
-              underlined
+              width="90%"
               required
               onChange={(e) => setAddress(e.target.value)}
             />

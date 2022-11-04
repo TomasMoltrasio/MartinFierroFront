@@ -1,12 +1,20 @@
 import { Card, Text, Row, Button, Col, Image, Modal } from "@nextui-org/react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ProductToCart from "./ProductToCart";
+import UserContext from "context/UserContext";
+import CreateProduct from "./CreateProduct";
 
 export default function CardMenu({ product, nameId }) {
   const [showModal, setShowModal] = useState(false);
+  const [showModalCreate, setShowModalCreate] = useState(false);
+  const { user } = useContext(UserContext);
 
   const handleShowModal = () => {
     setShowModal(false);
+  };
+
+  const handleShowModalCreate = () => {
+    setShowModalCreate(false);
   };
 
   return (
@@ -15,7 +23,11 @@ export default function CardMenu({ product, nameId }) {
       isHoverable
       className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 hover:scale-105"
       css={{ w: "100%", h: "300px" }}
-      onPress={() => setShowModal(true)}
+      onPress={() => {
+        user && user.token !== null
+          ? setShowModalCreate(true)
+          : setShowModal(true);
+      }}
     >
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
         <Row justify="flex-end">
@@ -98,6 +110,20 @@ export default function CardMenu({ product, nameId }) {
         height="300px"
       >
         <ProductToCart product={product} handleShowModal={handleShowModal} />
+      </Modal>
+      <Modal
+        open={showModalCreate}
+        onClose={handleShowModalCreate}
+        closeButton
+        blur
+        width="400px"
+        height="300px"
+      >
+        <CreateProduct
+          product={product}
+          handleShowModal={handleShowModalCreate}
+          edit={true}
+        />
       </Modal>
     </Card>
   );

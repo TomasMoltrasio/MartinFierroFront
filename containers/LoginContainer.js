@@ -1,4 +1,4 @@
-import { Input, Image, Text } from "@nextui-org/react";
+import { Input, Image, Text, Loading } from "@nextui-org/react";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import UserContext from "context/UserContext";
@@ -9,9 +9,11 @@ export default function LoginContainer() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     let user = {
       username,
       password,
@@ -22,6 +24,8 @@ export default function LoginContainer() {
           icon: "error",
           title: "Oops...",
           text: "Usuario o contraseña incorrectos",
+        }).then(() => {
+          setLoading(false);
         });
       } else {
         router.push("/");
@@ -52,7 +56,7 @@ export default function LoginContainer() {
                 border-black
                 rounded-lg
                 p-4
-                space-y-8
+                gap-8
                 bg-white
                 "
         onSubmit={handleSubmit}
@@ -89,8 +93,11 @@ export default function LoginContainer() {
           onChange={(e) => setPassword(e.target.value)}
           as="input"
         />
-        <button
-          className="
+        {loading ? (
+          <Loading />
+        ) : (
+          <button
+            className="
                 w-2/4
                 h-max
                 p-2
@@ -108,10 +115,11 @@ export default function LoginContainer() {
                 focus:ring-gray-600
                 focus:ring-opacity-50
               "
-          type="submit"
-        >
-          Confirmar
-        </button>
+            type="submit"
+          >
+            Confirmar
+          </button>
+        )}
       </form>
     </div>
   );

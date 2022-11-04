@@ -74,7 +74,7 @@ export default function CardDish({ product }) {
               transform="uppercase"
               color="#000"
               className="
-                text-base
+                text-lg
                 md:text-lg
                 lg:text-lg
                 xl:text-lg
@@ -91,7 +91,7 @@ export default function CardDish({ product }) {
               h3
               transform="uppercase"
               className="
-                text-2xl
+                text-lg
                 md:text-xl
                 lg:text-xl
                 xl:text-xl
@@ -103,7 +103,7 @@ export default function CardDish({ product }) {
             text-slate-900
             "
             >
-              ${product.price}
+              {`$${product.price}`}
             </Text>
           </Col>
         </Row>

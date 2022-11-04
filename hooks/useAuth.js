@@ -36,7 +36,7 @@ const useAuth = () => {
   };
 
   const logOut = () => {
-    cookies.remove("user");
+    cookies.remove("user", { path: "/" });
     setUser({ user: null });
   };
 

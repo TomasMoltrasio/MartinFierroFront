@@ -12,6 +12,7 @@ export default function Menu({ feature }) {
         <div className="cursor-pointer w-full">
           <Card
             isPressable
+            isHoverable
             css={{
               width: "100%",
               height: "100%",

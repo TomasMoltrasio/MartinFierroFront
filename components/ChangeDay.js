@@ -18,11 +18,6 @@ export default function ChangeDay({ handleShowModalDay }) {
   const selectDay = async (e) => {
     await changeActiveDay(e.target.value).finally(async () => {
       handleShowModalDay();
-      Swal.fire({
-        icon: "success",
-        title: "¡El plato del día ha sido cambiado!",
-        showConfirmButton: true,
-      });
       await validated("/").finally(() => {
         Swal.fire({
           icon: "success",

@@ -4,6 +4,7 @@ import CardEmpanada from "components/CardEmpanada";
 import NextLink from "next/link";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Head from "next/head";
+import { Fragment } from "react";
 
 export default function MenuContainer({ products, nameId = "Menu" }) {
   return (
@@ -24,29 +25,17 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
         </div>
         <Grid.Container gap={2}>
           {products.map((product) => (
-            <>
-              {product.name !== "Empanadas" ? (
-                <Grid
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  key={`productos-${product._id}`}
-                >
+            <Fragment key={`productos-menu-${product._id}`}>
+              {nameId !== "Empanadas" ? (
+                <Grid xs={12} sm={6} md={4} lg={3}>
                   <CardMenu product={product} nameId={nameId} />
                 </Grid>
               ) : (
-                <Grid
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                  key={`empanadas-${product._id}`}
-                >
+                <Grid xs={12} sm={12} md={12} lg={12}>
                   <CardEmpanada product={product} />
                 </Grid>
               )}
-            </>
+            </Fragment>
           ))}
         </Grid.Container>
       </div>
