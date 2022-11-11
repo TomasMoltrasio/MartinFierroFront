@@ -171,11 +171,14 @@ export default function CreateProduct({
         <button
           className="
           flex
-          w-full
-          xl:w-3/12
-          lg:w-3/12
-          md:w-3/12
-          2xl:w-3/12
+          items-center
+          justify-center
+          p-2
+          w-1/2
+          xl:w-2/12
+          lg:w-2/12
+          md:w-2/12
+          2xl:w-2/12
         h-max
         bg-lime-500
         text-white

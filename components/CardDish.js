@@ -15,7 +15,7 @@ export default function CardDish({ product }) {
       isHoverable
       className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 hover:scale-105"
       css={{
-        w: "80%",
+        w: "100%",
         h: "300px",
         "@md": { w: "30%", h: "300px" },
         "@lg": { w: "30%", h: "300px" },

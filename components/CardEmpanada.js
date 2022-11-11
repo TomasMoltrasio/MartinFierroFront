@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
-import { Image, Button, Radio } from "@nextui-org/react";
+import { Image, Button, Radio, Tooltip } from "@nextui-org/react";
 import { BsCartPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
 
@@ -95,9 +95,11 @@ export default function CardEmpanada({ product }) {
               className="
             w-3/4 h-max flex flex-row items-center justify-start text-sm"
             >
-              <p className="text-black font-semibold ml-8">{opTaste.name}</p>
+              <p className="text-black font-semibold ml-4 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8">
+                {opTaste.name}
+              </p>
             </div>
-            <div className="w-1/4 h-full flex flex-row items-center justify-end mr-8">
+            <div className="w-1/4 h-full flex flex-row items-center justify-end mr-4 md:mr-8 lg:mr-8 xl:mr-8 2xl:mr-8">
               <Button.Group
                 size="xs"
                 color={taste[opTaste.value] === 0 ? "#000" : "success"}
@@ -136,8 +138,12 @@ export default function CardEmpanada({ product }) {
           </div>
         ))}
         <div className="w-full h-max flex flex-row items-center justify-between">
-          <h3 className="font-medium ml-8">Cantidad total</h3>
-          <h3 className="font-semibold mr-20">{quantity}</h3>
+          <h3 className="font-normal ml-4 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8">
+            Cantidad total
+          </h3>
+          <h3 className="font-semibold mr-16 md:mr-20 lg:mr-20 xl:mr-20 2xl:mr-20">
+            {quantity}
+          </h3>
         </div>
         <div className="w-full h-max flex flex-row items-center justify-center px-4">
           <Radio.Group
@@ -151,25 +157,29 @@ export default function CardEmpanada({ product }) {
             label="Selecciona una opción"
           >
             <Radio value="fritas">Fritas</Radio>
-            <Radio
-              isDisabled={
-                date.getDay() === 0 ||
-                date.getDay() === 6 ||
-                date.getDay() === 5
-              }
-              description={
+            <Tooltip
+              content={
                 date.getDay() === 0 ||
                 date.getDay() === 6 ||
                 date.getDay() === 5
                   ? "No disponible los fines de semana"
                   : ""
               }
-              value="al horno"
             >
-              Horno
-            </Radio>
+              <Radio
+                isDisabled={
+                  date.getDay() === 0 ||
+                  date.getDay() === 6 ||
+                  date.getDay() === 5
+                }
+                value="al horno"
+              >
+                Horno
+              </Radio>
+            </Tooltip>
           </Radio.Group>
         </div>
+        <p></p>
         <div className="w-full h-max flex flex-col items-center justify-center">
           <button
             className="w-11/12 h-max flex flex-row items-center justify-center

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CartContext from "context/CartContext";
 import { Image, Col, Row } from "@nextui-org/react";
+import { BsDashLg, BsTrash } from "react-icons/bs";
 
 export default function CartItem({ product }) {
   const { removeProduct } = useContext(CartContext);
@@ -35,7 +36,7 @@ export default function CartItem({ product }) {
   };
 
   return (
-    <div className="flex flex-row items-center w-full h-full">
+    <div className="flex flex-row items-center w-full h-full my-1">
       <div className="flex flex-col items-center justify-center w-max h-full">
         <Image
           src={product.image}
@@ -43,7 +44,7 @@ export default function CartItem({ product }) {
           objectFit="cover"
           width={100}
           height={100}
-          className="rounded-md"
+          className="rounded-md ml-1"
         />
       </div>
       <div className="flex flex-col items-start pl-2 justify-center w-full h-full">
@@ -61,7 +62,11 @@ export default function CartItem({ product }) {
           className="w-full h-10 font-semibold text-base text-red-500 disabled:hidden hover:scale-110"
           onClick={() => handleRemoveProduct(product)}
         >
-          Quitar
+          {product.quantity > 1 ? (
+            <BsDashLg className="text-xl ml-2" />
+          ) : (
+            <BsTrash className="text-xl ml-2" />
+          )}
         </button>
       </div>
     </div>

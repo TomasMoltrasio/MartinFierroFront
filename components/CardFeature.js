@@ -9,7 +9,7 @@ export default function Menu({ feature }) {
         <title>{feature.title}</title>
       </Head>
       <NextLink href={feature.link}>
-        <div className="cursor-pointer w-full">
+        <div className="cursor-pointer w-full my-2 md:mx-2 lg:mx-2 xl:mx-2 2xl:mx-2">
           <Card
             isPressable
             isHoverable

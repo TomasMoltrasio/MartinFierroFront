@@ -53,7 +53,6 @@ export default function MenuFeatureContainer() {
       </Head>
       <div className="flex flex-col flex-wrap items-center justify-center w-full h-max">
         <Grid.Container
-          gap={2}
           justify="start"
           css={{
             height: "100%",

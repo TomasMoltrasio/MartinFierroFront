@@ -116,8 +116,8 @@ export default function CardMenu({ product, nameId }) {
         onClose={handleShowModalCreate}
         closeButton
         blur
-        width="400px"
-        height="300px"
+        width="100%"
+        height="100%"
       >
         <CreateProduct
           product={product}

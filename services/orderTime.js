@@ -1,11 +1,11 @@
 const getOrderTime = () => {
   const morningStart = 11;
   const morningEnd = 15;
-  const afternoonStart = 18;
+  const afternoonStart = 19;
   const afternoonEnd = 23;
   const date = new Date();
   const hours = date.getHours();
-  const horaActual = `${hours}:${date.getMinutes() + 20}`;
+  const horaActual = `${hours}:${date.getMinutes() + 10}`;
   if (date.getDay !== 1) {
     if (hours >= morningStart && hours < morningEnd) {
       let times = [];

@@ -47,11 +47,10 @@ export default function Checkout({ handleShowModal }) {
     const { url } = await sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
-    router.push(
-      `https://api.whatsapp.com/${url}`,
-      `https://api.whatsapp.com/${url}`,
-      { shallow: true }
-    );
+    router.push(`https://wa.me/${url}`, `https://wa.me/${url}`, {
+      shallow: true,
+      locale: false,
+    });
   };
 
   return (
@@ -70,7 +69,7 @@ export default function Checkout({ handleShowModal }) {
             required
           />
           <Textarea
-            placeholder="Comentarios de la orden"
+            placeholder="Podés agregar un comentario a tu orden"
             type="text"
             size="md"
             width="90%"
@@ -109,7 +108,7 @@ export default function Checkout({ handleShowModal }) {
                 onChange={(e) => setSelectedOrderTime(e.target.value)}
                 className="w-11/12 h-10 border-2 border-slate-200 rounded-lg mt-1 px-4"
               >
-                <option value="">Seleccionar horario</option>
+                <option value="">Seleccionar un horario aproximado</option>
                 {orderTime.map((time) => (
                   <option key={`horario-${time}`}>{time}</option>
                 ))}
