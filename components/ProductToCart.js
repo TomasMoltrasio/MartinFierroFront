@@ -74,7 +74,11 @@ export default function ProductToCart({ product, handleShowModal }) {
             onChange={handleAddGarnish}
             className="w-11/12 h-10 rounded-md mb-4 border-2 border-gray-300 px-2"
           >
-            <option value="">Elegir una guarnición</option>
+            <option value="">
+              {product.category === "Pastas"
+                ? "Elegir una salsa"
+                : "Elegir una guarnición"}
+            </option>
             {product.garnish.map((garnish, index) => (
               <option key={`garnish-option-${index}`} value={garnish}>
                 {garnish.charAt(0).toUpperCase() + garnish.slice(1)}

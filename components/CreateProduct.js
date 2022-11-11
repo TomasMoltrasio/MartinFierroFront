@@ -36,9 +36,10 @@ export default function CreateProduct({
     };
 
     if (edit) {
-      const res = await updateProduct(product._id, savedProduct);
+      const response = await updateProduct(product._id, savedProduct);
+      console.log(response);
       handleShowModal();
-      if (res.status === 200) {
+      if (response) {
         await validated("menu").finally(() => {
           Swal.fire({
             title: "Producto actualizado",
@@ -51,6 +52,14 @@ export default function CreateProduct({
               window.location.reload();
             }
           });
+        });
+      } else {
+        Swal.fire({
+          title: "Error al actualizar producto",
+          icon: "error",
+          showConfirmButton: true,
+          zIndex: 9990,
+          confirmButtonColor: "#3085d6",
         });
       }
     } else {
