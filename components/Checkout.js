@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import CartContext from "context/CartContext";
-import { sendWhatsappMessage } from "services/checkout";
+import sendWhatsappMessage from "services/sendWP";
 import { Input, Radio, Textarea, Loading, Badge } from "@nextui-org/react";
 import getOrderTime from "services/orderTime";
 import { useRouter } from "next/router";
@@ -44,7 +44,7 @@ export default function Checkout({ handleShowModal }) {
       cart,
       selectedOrderTime,
     };
-    const { url } = await sendWhatsappMessage(data);
+    const url = sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
     router.push(`https://wa.me/${url}`, `https://wa.me/${url}`, {

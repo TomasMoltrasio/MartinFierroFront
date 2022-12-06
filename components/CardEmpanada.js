@@ -69,7 +69,7 @@ export default function CardEmpanada({ product }) {
   const getTotal = () => {
     let docenas = Math.floor(quantity / 12);
     let unidades = quantity % 12;
-    let priceDocena = product.price * 12 - 100;
+    let priceDocena = product.price * 12;
     let priceUnidad = product.price;
     let total = docenas * priceDocena + unidades * priceUnidad;
     return total;

@@ -37,7 +37,6 @@ export default function CreateProduct({
 
     if (edit) {
       const response = await updateProduct(product._id, savedProduct);
-      console.log(response);
       handleShowModal();
       if (response) {
         await validated("menu").finally(() => {
@@ -201,7 +200,7 @@ export default function CreateProduct({
           type="submit"
           aria-label="Crear producto"
         >
-          Crear producto
+          {edit ? "Editar producto" : "Crear producto"}
         </button>
       </form>
     </>

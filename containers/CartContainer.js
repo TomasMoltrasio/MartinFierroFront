@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
 import CartItem from "components/CartItem";
-import { Modal, Text } from "@nextui-org/react";
+import { Modal, Text, Button } from "@nextui-org/react";
 import Checkout from "components/Checkout";
+import { MdRestaurantMenu } from "react-icons/md";
+import { useRouter } from "next/router";
 
 export default function CartContainer() {
   const { state, clearCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
   const { cart } = state;
+  const router = useRouter();
 
   const handleClearCart = () => {
     clearCart();
@@ -69,9 +72,19 @@ export default function CartContainer() {
         </>
       ) : (
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <Text h3 className="text-center text-gray-800 text-3xl mt-24">
+          <Text h3 className="text-center text-gray-800 text-3xl mt-24 mb-8">
             No hay productos en el carrito
           </Text>
+          <Button
+            className="w-1/12 h-12 text-black text-lg bg-white rounded-full shadow-md hover:shadow-none hover:scale-110 transition-all duration-300 ease-in-out transform"
+            bordered
+            borderWeight={2}
+            color={"#000"}
+            onClick={() => router.push("/menu")}
+            iconRight={<MdRestaurantMenu size={20} />}
+          >
+            Ir al menú
+          </Button>
         </div>
       )}
       <Modal

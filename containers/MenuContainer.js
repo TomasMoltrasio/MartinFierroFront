@@ -27,7 +27,7 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
           {products.map((product) => (
             <Fragment key={`productos-menu-${product._id}`}>
               {nameId !== "Empanadas" ? (
-                <Grid xs={12} sm={6} md={4} lg={3}>
+                <Grid xs={12} sm={6} md={4} lg={2}>
                   <CardMenu product={product} nameId={nameId} />
                 </Grid>
               ) : (

@@ -1,8 +1,8 @@
 const getOrderTime = () => {
-  const morningStart = 11;
+  const morningStart = 10;
   const morningEnd = 15;
   const afternoonStart = 19;
-  const afternoonEnd = 23;
+  const afternoonEnd = 24;
   const date = new Date();
   const hours = date.getHours();
   const horaActual = `${hours}:${date.getMinutes() + 10}`;
@@ -24,8 +24,11 @@ const getOrderTime = () => {
       return times;
     } else if (hours >= afternoonStart && hours < afternoonEnd) {
       let times = [];
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 4; j++) {
+          if ((i === 4 && j === 3) || (i === 4 && j === 2)) {
+            break;
+          }
           let hora = `${afternoonStart + i}:${j * 15 === 0 ? "00" : j * 15}`;
           if (
             hora.split(":")[0] > horaActual.split(":")[0] ||
