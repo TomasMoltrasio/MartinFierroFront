@@ -61,7 +61,7 @@ export default function NavBar() {
     <Navbar
       maxWidth={"fluid"}
       variant="sticky"
-      className="p-2"
+      className="py-2"
       css={{
         color: "#000",
         boxShadow: "0 0 10px rgba(0,0,0,0.1)",

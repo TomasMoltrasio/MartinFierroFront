@@ -8,10 +8,10 @@ export default function HomeContainer({ product }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col w-full h-max gap-10 items-center justify-start">
+    <div className="flex flex-col w-full h-max  items-center justify-start">
       {todayName !== "lunes" ? (
         <>
-          <div className="flex flex-col items-center justify-start w-full h-full gap-4 mb-8">
+          <div className="flex flex-col items-center justify-start w-full h-full mt-2 gap-4 mb-8">
             {" "}
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Text
