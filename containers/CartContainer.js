@@ -30,7 +30,7 @@ export default function CartContainer() {
   };
 
   return (
-    <div className="w-full h-max flex flex-col items-center justify-start">
+    <div className="w-11/12 h-max flex flex-col items-center justify-start">
       {cart && cart.length > 0 ? (
         <>
           <div className="flex flex-col items-center justify-center w-full h-full mt-4">

@@ -8,10 +8,10 @@ export default function HomeContainer({ product }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col  w-full h-max items-center justify-start">
+    <div className="flex flex-col w-11/12 h-full items-center justify-start">
       {todayName !== "lunes" ? (
         <>
-          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__backInRight border-4 border-x-indigo-700 border-y-indigo-400 border-opacity-70 rounded-lg shadow-xl items-center justify-start py-6 w-full h-full my-4 gap-4">
+          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown border-4 border-x-indigo-700 border-y-indigo-400 border-opacity-70 rounded-lg shadow-xl items-center justify-center md:mt-20 py-6 w-full h-max my-4 gap-4">
             {" "}
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Text
@@ -49,7 +49,7 @@ export default function HomeContainer({ product }) {
           <div className="flex flex-col items-center justify-center w-full h-full">
             <Text
               h2
-              className="text-center text-gray-800 text-3xl mb-4 animate__animated animate__backInLeft"
+              className="text-center text-gray-800 text-3xl mb-4 animate__animated animate__zoomInUp"
             >
               {`Nuestro plato del día`}
             </Text>
