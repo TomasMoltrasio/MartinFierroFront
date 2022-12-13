@@ -41,7 +41,7 @@ export default function SalonContainer() {
   };
 
   return (
-    <div className="w-11/12 h-screen flex flex-col items-center justify-start">
+    <div className="w-11/12 h-max flex flex-col items-center justify-start">
       <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-4/5 mt-4 flex flex-col items-center relative justify-center">
         <Image
           src={images[index]}
