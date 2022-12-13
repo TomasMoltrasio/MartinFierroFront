@@ -9,7 +9,7 @@ export default function Menu({ feature }) {
         <title>{feature.title}</title>
       </Head>
       <NextLink href={feature.link}>
-        <div className="cursor-pointer w-full my-2 md:mx-2 lg:mx-2 xl:mx-2 2xl:mx-2">
+        <div className="group cursor-pointer animate__animated animate__jackInTheBox w-full my-2 md:mx-2 lg:mx-2 xl:mx-2 2xl:mx-2">
           <Card
             isPressable
             isHoverable
@@ -18,10 +18,6 @@ export default function Menu({ feature }) {
               height: "100%",
               borderRadius: "10px",
               boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
             }}
           >
             <Card.Header
@@ -44,20 +40,21 @@ export default function Menu({ feature }) {
               text-white
               font-bold
               text-4xl
+              group-hover:scale-125
+              transition duration-500 ease-in-out
               "
                 h2
               >
                 {feature.title}
               </Text>
             </Card.Header>
-
             <Card.Image
               src={feature.image}
               alt={feature.title}
               width="100%"
               height={300}
               objectFit="cover"
-              className="rounded-md"
+              className="rounded-md group-hover:scale-125 transition duration-500 ease-in-out"
             />
           </Card>
         </div>

@@ -1,4 +1,4 @@
-import { Text, Button, Image } from "@nextui-org/react";
+import { Text, Button } from "@nextui-org/react";
 import CardDish from "components/CardDish";
 import { MdRestaurantMenu } from "react-icons/md";
 import { useRouter } from "next/router";
@@ -11,7 +11,7 @@ export default function HomeContainer({ product }) {
     <div className="flex flex-col  w-full h-max items-center justify-start">
       {todayName !== "lunes" ? (
         <>
-          <div className="flex flex-col bg-indigo-900/20 md:flex-row border-2 border-black rounded-lg shadow-xl items-center justify-start py-6 w-full h-full my-4 gap-4">
+          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__backInRight border-4 border-x-indigo-700 border-y-indigo-400 border-opacity-70 rounded-lg shadow-xl items-center justify-start py-6 w-full h-full my-4 gap-4">
             {" "}
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Text
@@ -20,7 +20,11 @@ export default function HomeContainer({ product }) {
           text-gray-800
           text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
               >
-                {`Hoy ${todayName} nuestro horario es de`}
+                Hoy{" "}
+                <span className="text-indigo-700 font-medium uppercase font-sans text-xl md:text-3xl">
+                  {todayName}
+                </span>{" "}
+                nuestro horario es de
               </Text>
               <Text
                 h3
@@ -31,7 +35,7 @@ export default function HomeContainer({ product }) {
             </div>
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Button
-                className="w-11/12 md:w-4/12 h-12 text-black text-lg bg-white rounded-full shadow-md hover:shadow-none hover:scale-105 transition-all duration-300 ease-linear transform"
+                className="w-11/12 md:w-4/12 h-12 text-black text-lg bg-white rounded-full shadow-md hover:shadow-none md:hover:w-6/12 transition-all duration-300 ease-linear transform"
                 bordered
                 borderWeight={2}
                 color={"#000"}
@@ -43,7 +47,10 @@ export default function HomeContainer({ product }) {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
-            <Text h2 className="text-center text-gray-800 text-3xl mb-4">
+            <Text
+              h2
+              className="text-center text-gray-800 text-3xl mb-4 animate__animated animate__backInLeft"
+            >
               {`Nuestro plato del día`}
             </Text>
             <CardDish product={product} />
