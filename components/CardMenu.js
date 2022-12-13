@@ -63,7 +63,7 @@ export default function CardMenu({ product, nameId }) {
           <Col className="w-3/4">
             <Text
               h3
-              weight="semibold"
+              weight="light"
               transform="uppercase"
               color="#000"
               className="

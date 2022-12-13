@@ -44,7 +44,7 @@ export default function CartItem({ product }) {
           objectFit="cover"
           width={100}
           height={100}
-          className="rounded-md ml-1"
+          className="rounded-md ml-1 shadow-md hover:shadow-none hover:scale-105 transition-all duration-1000 ease-in-out transform"
         />
       </div>
       <div className="flex flex-col items-start pl-2 justify-center w-full h-full">

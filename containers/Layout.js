@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       <Container
         as="main"
         xl
-        className="flex-auto flex flex-col items-center justify-center"
+        className="flex-auto flex flex-col items-center justify-center bg-indigo-200/20"
       >
         {children}
       </Container>

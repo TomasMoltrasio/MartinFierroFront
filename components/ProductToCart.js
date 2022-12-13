@@ -4,8 +4,10 @@ import CartContext from "context/CartContext";
 import { Image, Collapse, Checkbox } from "@nextui-org/react";
 import { BsPatchMinus, BsPatchPlus, BsCartPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 export default function ProductToCart({ product, handleShowModal }) {
+  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [of, setOf] = useState("");
   const [garnish, setGarnish] = useState("");
@@ -28,6 +30,16 @@ export default function ProductToCart({ product, handleShowModal }) {
       showConfirmButton: true,
       zIndex: 9990,
       confirmButtonColor: "#3085d6",
+      confirmButtonText: "Continuar comprando",
+      cancelButtonText: "Ir al carrito",
+      showCancelButton: true,
+      cancelButtonColor: "#86C214",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return null;
+      } else {
+        router.push("/cart");
+      }
     });
   };
 

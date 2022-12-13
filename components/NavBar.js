@@ -7,6 +7,7 @@ import {
   Badge,
   Avatar,
   Modal,
+  css,
 } from "@nextui-org/react";
 import { HiOutlineMenu } from "react-icons/hi";
 import { ImCart } from "react-icons/im";
@@ -62,6 +63,9 @@ export default function NavBar() {
       maxWidth={"fluid"}
       variant="sticky"
       className="py-2"
+      isCompact={true}
+      isBordered={false}
+      disableBlur={true}
       css={{
         color: "#000",
         boxShadow: "0 0 10px rgba(0,0,0,0.1)",
@@ -82,9 +86,9 @@ export default function NavBar() {
           <Image
             src="/LogoMartinFierro.svg"
             alt="Logo Martin Fierro"
-            width={100}
-            height={100}
-            objectFit="cover"
+            width={80}
+            height={80}
+            objectFit="contain"
             className="cursor-pointer"
           />
         </NextLink>
@@ -93,7 +97,7 @@ export default function NavBar() {
         activeColor="primary"
         hideIn="xs"
         variant="underline"
-        className="text-xl font-semibold"
+        className="text-xl font-extralight"
       >
         <NextLink href="/">
           <Navbar.Link isActive={router.pathname === "/" ? true : false}>

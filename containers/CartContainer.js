@@ -39,7 +39,7 @@ export default function CartContainer() {
             </Text>
           </div>
           <div
-            className="flex flex-col items-center bg-slate-200 mt-4 border-2 border-black justify-center w-full md:w-2/6 lg:2/6 xl:w-2/6
+            className="flex flex-col items-center bg-indigo-900/20 mt-4 border-2 border-black justify-center w-full md:w-2/6 lg:2/6 xl:w-2/6
       2xl:w-2/6 3xl:w-2/6 4xl:w-2/6 rounded-lg h-full"
           >
             {cart &&

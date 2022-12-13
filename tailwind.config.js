@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        martinfierro: "url('/martinfierrocartel.jpg')",
+        martinfierro: "url('/LogoMartínFierro.svg')",
       },
     },
   },

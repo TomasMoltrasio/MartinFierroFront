@@ -13,6 +13,7 @@ export default function Checkout({ handleShowModal }) {
   const [takeAway, setTakeAway] = useState(false);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [between, setBetween] = useState("");
   const [note, setNote] = useState("");
   const [selectedOrderTime, setSelectedOrderTime] = useState("");
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,7 @@ export default function Checkout({ handleShowModal }) {
   const handleTakeAway = (value) => {
     setTakeAway(value);
     setAddress("");
+    setBetween("");
   };
 
   const handleSendWhatsappMessage = async () => {
@@ -40,6 +42,7 @@ export default function Checkout({ handleShowModal }) {
     const data = {
       name,
       address,
+      between,
       note,
       cart,
       selectedOrderTime,
@@ -87,14 +90,26 @@ export default function Checkout({ handleShowModal }) {
             <Radio value={true}>Envío a domicilio</Radio>
           </Radio.Group>
           {takeAway ? (
-            <Input
-              placeholder="Dirección"
-              type="text"
-              size="md"
-              width="90%"
-              required
-              onChange={(e) => setAddress(e.target.value)}
-            />
+            <>
+              <Input
+                placeholder="Dirección"
+                type="text"
+                size="md"
+                width="90%"
+                required
+                onChange={(e) => setAddress(e.target.value)}
+              />
+
+              <label>Entre calles</label>
+              <Input
+                placeholder="Ej: Arenaza y Bartolomé Correa"
+                type="text"
+                size="md"
+                width="90%"
+                required
+                onChange={(e) => setBetween(e.target.value)}
+              />
+            </>
           ) : null}
         </div>
       </div>
@@ -129,6 +144,7 @@ export default function Checkout({ handleShowModal }) {
               !selectedOrderTime ||
               !cart ||
               (takeAway === true && !address) ||
+              (takeAway === true && !between) ||
               selectedOrderTime === "" ||
               loading
             }

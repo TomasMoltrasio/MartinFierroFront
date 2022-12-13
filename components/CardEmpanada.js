@@ -4,8 +4,10 @@ import CartContext from "context/CartContext";
 import { Image, Button, Radio, Tooltip } from "@nextui-org/react";
 import { BsCartPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 export default function CardEmpanada({ product }) {
+  const router = useRouter();
   const [quantity, setQuantity] = useState(0);
   const [of, setOf] = useState("fritas");
   const [date, setDate] = useState(new Date());
@@ -43,6 +45,10 @@ export default function CardEmpanada({ product }) {
       showConfirmButton: true,
       zIndex: 9990,
       confirmButtonColor: "#3085d6",
+      confirmButtonText: "Continuar comprando",
+      cancelButtonText: "Ir al carrito",
+      showCancelButton: true,
+      cancelButtonColor: "#86C214",
     }).then((result) => {
       if (result.isConfirmed) {
         setTaste({
@@ -55,6 +61,8 @@ export default function CardEmpanada({ product }) {
         });
         setQuantity(0);
         setOf("fritas");
+      } else {
+        router.push("/cart");
       }
     });
   };
