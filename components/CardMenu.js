@@ -63,7 +63,7 @@ export default function CardMenu({ product, nameId }) {
           <Col className="w-3/4">
             <Text
               h3
-              weight="light"
+              weight="medium"
               transform="uppercase"
               color="#000"
               className="
@@ -92,8 +92,9 @@ export default function CardMenu({ product, nameId }) {
                 3xl:text-xl
                 4xl:text-xl
             text-end
-            font-semibold
+            font-medium
             text-slate-900
+            tracking-wide
             "
             >
               {`$${product.price}`}

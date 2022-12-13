@@ -8,7 +8,7 @@ export default function HomeContainer({ product }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col w-11/12 h-full items-center justify-start">
+    <div className="flex flex-col w-11/12 h-screen items-center justify-start">
       {todayName !== "lunes" ? (
         <>
           <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown border-4 border-x-indigo-700 border-y-indigo-400 border-opacity-70 rounded-lg shadow-xl items-center justify-center md:mt-20 py-6 w-full h-max my-4 gap-4">

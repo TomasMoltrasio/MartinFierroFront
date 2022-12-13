@@ -71,7 +71,7 @@ export default function CardDish({ product }) {
           <Col className="w-3/4">
             <Text
               h3
-              weight="light"
+              weight="medium"
               transform="uppercase"
               color="#000"
               className="
@@ -100,8 +100,9 @@ export default function CardDish({ product }) {
                 3xl:text-xl
                 4xl:text-xl
             text-end
-            font-semibold
+            font-medium
             text-slate-800
+            tracking-wide
             "
             >
               {`$${product.price}`}
