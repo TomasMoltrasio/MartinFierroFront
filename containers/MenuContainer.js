@@ -13,7 +13,7 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
         <title>{nameId}</title>
       </Head>
 
-      <div className="w-full h-max flex flex-col items-center justify-start">
+      <div className="group cursor-pointer">
         <div className="w-full h-12 flex flex-row items-center justify-between px-4">
           <NextLink href="/menu">
             <div className="h-12 flex flex-row items-center justify-center cursor-pointer">

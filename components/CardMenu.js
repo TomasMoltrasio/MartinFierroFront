@@ -21,7 +21,8 @@ export default function CardMenu({ product, nameId }) {
     <Card
       isPressable
       isHoverable
-      className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 hover:scale-105"
+      draggable={false}
+      className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700"
       css={{ w: "100%", h: "300px" }}
       onPress={() => {
         user && user.token !== null
@@ -47,6 +48,7 @@ export default function CardMenu({ product, nameId }) {
           height="100%"
           objectFit="cover"
           alt="Card example background"
+          loading="lazy"
         />
       </Card.Body>
       <Card.Footer
