@@ -1,4 +1,4 @@
-import { Grid, Text, User, Link } from "@nextui-org/react";
+import { Grid, Text, User } from "@nextui-org/react";
 
 export default function ContactContainer() {
   return (
@@ -93,7 +93,7 @@ export default function ContactContainer() {
                 font-normal
                 text-center
                 text-gray-800
-                mb-4
+                
                 w-full
                 "
             >
@@ -106,7 +106,6 @@ export default function ContactContainer() {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d573.7363303088554!2d-58.01469320394766!3d-35.564992180569796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95980debb55c5c29%3A0xca7f0f8b04a6b690!2sMartin%20Fierro%20Comida%20Casera!5e0!3m2!1ses-419!2sar!4v1666270059422!5m2!1ses-419!2sar"
             width={400}
             height={250}
-            style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

@@ -187,8 +187,8 @@ export default function ProductToCart({ product, handleShowModal }) {
 
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <button
-          className="w-11/12 h-1/2 flex flex-row items-center justify-center
-          bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500"
+          className="w-11/12 h-1/4 flex flex-row items-center justify-center group
+          bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500 transition-colors duration-1000 ease-linear"
           onClick={handleAddProduct}
           disabled={
             (garnish === "" && product.garnish) ||
@@ -196,9 +196,10 @@ export default function ProductToCart({ product, handleShowModal }) {
             (garnish === "ensalada" && garnishAdd.length === 0) ||
             (product.name === "Ensalada" && garnishAdd.length === 0)
           }
+          size="lg"
         >
           Agregar al carrito
-          <BsCartPlus className="ml-2" />
+          <BsCartPlus className="ml-2 text-xl group-disabled:opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-linear" />
         </button>
       </div>
     </div>

@@ -1,7 +1,10 @@
 const getOrderTime = () => {
   const date = new Date();
   const hours = date.getHours();
-  const horaActual = `${hours}:${date.getMinutes() + 10}`;
+  let horaActual = `${hours}:${date.getMinutes() + 10}`;
+  if (horaActual.length === 4) {
+    horaActual = `0${horaActual}`;
+  }
   const morning = [
     "10:15",
     "10:30",
@@ -42,7 +45,7 @@ const getOrderTime = () => {
   ];
 
   if (date.getDay !== 1) {
-    if (horaActual > "18:45") {
+    if (horaActual > "18:45" && horaActual < "23:30") {
       const actual = night.filter((time) => time > horaActual);
       return actual;
     } else {
