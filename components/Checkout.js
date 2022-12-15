@@ -64,7 +64,8 @@ export default function Checkout({ handleShowModal }) {
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center gap-4 justify-center w-full h-full">
           <Input
-            placeholder="Nombre"
+            labelLeft="Nombre"
+            placeholder="Ej: Juan Perez"
             type="text"
             width="90%"
             size="md"
@@ -72,7 +73,7 @@ export default function Checkout({ handleShowModal }) {
             required
           />
           <Textarea
-            placeholder="Podés agregar un comentario a tu orden"
+            placeholder="Podes agregar un comentario a tu orden. Ej: El sandwich sin lechuga"
             type="text"
             size="md"
             width="90%"
@@ -92,7 +93,8 @@ export default function Checkout({ handleShowModal }) {
           {takeAway ? (
             <>
               <Input
-                placeholder="Dirección"
+                labelLeft="Dirección"
+                placeholder="Ej: Alvear 679"
                 type="text"
                 size="md"
                 width="90%"
@@ -100,8 +102,8 @@ export default function Checkout({ handleShowModal }) {
                 onChange={(e) => setAddress(e.target.value)}
               />
 
-              <label>Entre calles</label>
               <Input
+                labelLeft="Entre calles"
                 placeholder="Ej: Arenaza y Bartolomé Correa"
                 type="text"
                 size="md"
@@ -109,6 +111,9 @@ export default function Checkout({ handleShowModal }) {
                 required
                 onChange={(e) => setBetween(e.target.value)}
               />
+              <p className="text-xs text-gray-700">
+                *El envío es con cargo adicional y no corre por nuestra cuenta
+              </p>
             </>
           ) : null}
         </div>
