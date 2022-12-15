@@ -19,6 +19,7 @@ export default function ProductToCart({ product, handleShowModal }) {
     handleShowModal();
     const newProduct = {
       ...product,
+      name: product.category === "Dia" ? "Plato del día" : product.name,
       garnish: garnish + " " + garnishAdd.join(", "),
       of: of,
       price: product.price + garnishPrice,
@@ -188,7 +189,7 @@ export default function ProductToCart({ product, handleShowModal }) {
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <button
           className="w-11/12 h-1/4 flex flex-row items-center justify-center group
-          bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500 transition-colors duration-1000 ease-linear"
+          bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500 transition-colors duration-500 ease-linear"
           onClick={handleAddProduct}
           disabled={
             (garnish === "" && product.garnish) ||
