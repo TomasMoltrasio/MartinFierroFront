@@ -4,6 +4,7 @@ import Layout from "../containers/Layout";
 import Head from "next/head";
 import { CartContextProvider } from "context/CartContext";
 import { UserContextProvider } from "context/UserContext";
+import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
           </Head>
           <Layout>
             <Component {...pageProps} />
+            <Analytics />
           </Layout>
         </CartContextProvider>
       </UserContextProvider>
