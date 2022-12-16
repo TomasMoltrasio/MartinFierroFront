@@ -163,6 +163,7 @@ export default function ProductToCart({ product, handleShowModal }) {
             <p className="text-lg">Cantidad:</p>
             <div className="w-full h-full flex flex-row items-center justify-center">
               <button
+                aria-label="Decrementar cantidad"
                 className="w-1/3 h-full flex flex-col items-center justify-center"
                 onClick={() => {
                   if (quantity > 1) {
@@ -176,6 +177,7 @@ export default function ProductToCart({ product, handleShowModal }) {
                 {quantity}
               </p>
               <button
+                aria-label="Incrementar cantidad"
                 className="w-1/3 h-full flex flex-col items-center justify-center"
                 onClick={() => setQuantity(quantity + 1)}
               >
@@ -188,6 +190,7 @@ export default function ProductToCart({ product, handleShowModal }) {
 
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <button
+          aria-label="Agregar al carrito"
           className="w-11/12 h-1/4 flex flex-row items-center justify-center group
           bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-2 mb-2 rounded disabled:bg-red-500 transition-colors duration-500 ease-linear"
           onClick={handleAddProduct}

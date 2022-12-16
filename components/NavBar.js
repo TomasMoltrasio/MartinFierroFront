@@ -138,6 +138,7 @@ export default function NavBar() {
                   <Avatar
                     bordered
                     as="button"
+                    aria-label="User menu"
                     color="primary"
                     size="md"
                     src="/LogoMartinFierro.svg"

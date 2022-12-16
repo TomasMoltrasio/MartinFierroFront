@@ -114,6 +114,7 @@ export default function CardEmpanada({ product }) {
                 rounded
               >
                 <Button
+                  aria-label="Restar"
                   bordered
                   auto={true}
                   onClick={handleAddTaste}
@@ -125,6 +126,7 @@ export default function CardEmpanada({ product }) {
                   -
                 </Button>
                 <Button
+                  aria-label="Cantidad"
                   bordered
                   auto={true}
                   disabled={taste[opTaste.value] === 0}
@@ -133,6 +135,7 @@ export default function CardEmpanada({ product }) {
                   {taste[opTaste.value]}
                 </Button>
                 <Button
+                  aria-label="Sumar"
                   bordered
                   auto={true}
                   onClick={handleAddTaste}
@@ -190,6 +193,7 @@ export default function CardEmpanada({ product }) {
         <p></p>
         <div className="w-full h-max flex flex-col items-center justify-center">
           <button
+            aria-label="Agregar al carrito"
             className="w-11/12 h-max flex flex-row items-center justify-center
           bg-green-500 hover:bg-green-700 hover:scale-105 text-white font-bold py-2 px-4 mt-4 mb-2 rounded disabled:bg-red-500"
             onClick={handleAddProduct}

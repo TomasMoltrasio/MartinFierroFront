@@ -37,6 +37,7 @@ export default function ProductDashboard({ product }) {
         onChange={(e) => setPrice(e.target.value)}
       />
       <button
+        aria-label="Update"
         className="
             bg-blue-500
             hover:bg-blue-700

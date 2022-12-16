@@ -53,6 +53,7 @@ export default function CartContainer() {
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
             <button
+              aria-label="Confirmar pedido"
               className="w-11/12 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:scale-110 border-green-600"
               onClick={() => setShowModal(true)}
               disabled={!cart || cart.length === 0}
@@ -62,6 +63,7 @@ export default function CartContainer() {
                 : "Confirmar pedido"}
             </button>
             <button
+              aria-label="Vaciar carrito"
               className="w-11/12 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
               onClick={handleClearCart}
               disabled={!cart || cart.length === 0}
@@ -76,6 +78,7 @@ export default function CartContainer() {
             No hay productos en el carrito
           </Text>
           <Button
+            aria-label="Ir al menú"
             className="w-1/12 h-12 text-black text-lg bg-white rounded-full shadow-md hover:shadow-none hover:scale-110 transition-all duration-300 ease-in-out transform"
             bordered
             borderWeight={2}

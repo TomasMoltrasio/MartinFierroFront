@@ -39,6 +39,7 @@ export default function CardDish({ product }) {
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
         <Row justify="flex-end">
           <Button
+            aria-label="Agregar al carrito"
             className="hover:scale-125"
             auto={true}
             onClick={() => setShowModal(true)}

@@ -60,6 +60,7 @@ export default function ChangeDay({ handleShowModalDay }) {
           >
             <p>{product.name}</p>
             <button
+              aria-label="Seleccionar"
               className="bg-slate-400 text-white px-4 rounded"
               value={product._id}
               onClick={(e) => selectDay(e)}

@@ -19,29 +19,37 @@ export default function DashboardContainer({ products }) {
   };
 
   return (
-    <div className="flex flex-col w-full justify-center items-center">
-      <h1
-        className="
+    <>
+      {user?.token ? (
+        <div className="flex flex-col w-full justify-center items-center">
+          <h1
+            className="
         text-2xl
         font-bold
         text-gray-800
         mb-4
-        
       "
-      >
-        Dashboard{" "}
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={revalidate}
-        >
-          <FiRefreshCcw />
-        </button>
-      </h1>
-      <ul>
-        {products.map((product) => (
-          <ProductDashboard product={product} key={product._id} />
-        ))}
-      </ul>
-    </div>
+          >
+            Dashboard{" "}
+            <button
+              aria-label="Refresh"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={revalidate}
+            >
+              <FiRefreshCcw />
+            </button>
+          </h1>
+          <ul>
+            {products.map((product) => (
+              <ProductDashboard product={product} key={product._id} />
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          No tienes permisos para ver esta página
+        </h1>
+      )}
+    </>
   );
 }

@@ -97,6 +97,7 @@ export default function LoginContainer() {
           <Loading />
         ) : (
           <button
+            aria-label="Confirmar"
             className="
                 w-2/4
                 h-max

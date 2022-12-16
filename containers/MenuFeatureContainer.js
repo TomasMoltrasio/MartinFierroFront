@@ -6,42 +6,42 @@ export default function MenuFeatureContainer() {
   const feature = {
     1: {
       title: "Meganesas",
-      image: "/meganesas/mega-chyp.jpg",
+      image: "/features/mega-chyp.webp",
       link: "/menu/1",
     },
     2: {
       title: "Picadas",
-      image: "/picadas/picada.jpg",
+      image: "/features/picada.webp",
       link: "/menu/2",
     },
     3: {
       title: "Empanadas",
-      image: "/empanadas/empanada-carne.jpg",
+      image: "/features/empanada-carne.webp",
       link: "/menu/3",
     },
     4: {
       title: "Minutas",
-      image: "/minutas/bife.jpg",
+      image: "/features/bife.webp",
       link: "/menu/4",
     },
     5: {
       title: "Pastas",
-      image: "/pastas/fideos.jpg",
+      image: "/features/fideos.webp",
       link: "/menu/5",
     },
     6: {
       title: "Acompañamientos",
-      image: "/acompañamientos/papas.png",
+      image: "/features/papas.webp",
       link: "/menu/6",
     },
     7: {
       title: "Postres",
-      image: "/postres/flan.jpg",
+      image: "/features/flan.webp",
       link: "/menu/7",
     },
     8: {
       title: "Bebidas",
-      image: "/bebidas/coca-cola.png",
+      image: "/features/coca-cola.webp",
       link: "/menu/8",
     },
   };

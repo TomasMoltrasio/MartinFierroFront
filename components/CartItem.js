@@ -59,6 +59,7 @@ export default function CartItem({ product }) {
       </div>
       <div className="flex flex-col items-center justify-center w-max h-full pr-2">
         <button
+          aria-label="Remover producto"
           className="w-full h-10 font-semibold text-base text-red-500 disabled:hidden hover:scale-110"
           onClick={() => handleRemoveProduct(product)}
         >

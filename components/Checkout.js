@@ -142,6 +142,7 @@ export default function Checkout({ handleShowModal }) {
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <button
+            aria-label="Confirmar pedido"
             className="w-2/3 my-4 h-10 border-2 text-white font-semibold border-green-800 bg-green-500 rounded-lg disabled:bg-red-500 disabled:border-red-600 hover:scale-110 transition duration-1000 ease-linear"
             onClick={handleSendWhatsappMessage}
             disabled={

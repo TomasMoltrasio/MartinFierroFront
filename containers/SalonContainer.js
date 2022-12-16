@@ -5,24 +5,24 @@ import { BsWhatsapp } from "react-icons/bs";
 
 export default function SalonContainer() {
   const images = [
-    "salon/salon-1.jpg",
-    "salon/salon-2.jpg",
-    "salon/salon-3.jpg",
-    "salon/salon-4.jpg",
-    "salon/salon-5.jpg",
-    "salon/salon-6.jpg",
-    "salon/salon-7.jpg",
-    "salon/salon-8.jpg",
-    "salon/salon-9.jpg",
-    "salon/salon-10.jpg",
-    "salon/salon-11.jpg",
-    "salon/salon-12.jpg",
-    "salon/salon-13.jpg",
-    "salon/salon-14.jpg",
-    "salon/salon-15.jpg",
-    "salon/salon-16.jpg",
-    "salon/salon-17.jpg",
-    "salon/salon-18.jpg",
+    "salon/salon-1.webp",
+    "salon/salon-2.webp",
+    "salon/salon-3.webp",
+    "salon/salon-4.webp",
+    "salon/salon-5.webp",
+    "salon/salon-6.webp",
+    "salon/salon-7.webp",
+    "salon/salon-8.webp",
+    "salon/salon-9.webp",
+    "salon/salon-10.webp",
+    "salon/salon-11.webp",
+    "salon/salon-12.webp",
+    "salon/salon-13.webp",
+    "salon/salon-14.webp",
+    "salon/salon-15.webp",
+    "salon/salon-16.webp",
+    "salon/salon-17.webp",
+    "salon/salon-18.webp",
   ];
   const [index, setIndex] = useState(0);
   const handleNext = () => {
@@ -51,7 +51,7 @@ export default function SalonContainer() {
           objectFit="cover"
           className="rounded-2xl shadow-2xl"
         />
-        <button onClick={handlePrev}>
+        <button aria-label="Anterior imagen" onClick={handlePrev}>
           <TfiArrowCircleLeft
             size={40}
             className="
@@ -71,7 +71,7 @@ export default function SalonContainer() {
           "
           />
         </button>
-        <button onClick={handleNext}>
+        <button aria-label="Siguiente imagen" onClick={handleNext}>
           <TfiArrowCircleRight
             size={40}
             className="

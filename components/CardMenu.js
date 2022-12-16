@@ -22,7 +22,7 @@ export default function CardMenu({ product, nameId }) {
       isPressable
       isHoverable
       draggable={false}
-      className="shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700"
+      className={`shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 `}
       css={{ w: "100%", h: "300px" }}
       onPress={() => {
         user && user.token !== null
@@ -33,6 +33,7 @@ export default function CardMenu({ product, nameId }) {
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
         <Row justify="flex-end">
           <Button
+            aria-label="Agregar al carrito"
             className="hover:scale-125"
             onClick={() => setShowModal(true)}
             auto={true}
