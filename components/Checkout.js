@@ -1,9 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import CartContext from "context/CartContext";
 import sendWhatsappMessage from "services/sendWP";
-import { Input, Radio, Textarea, Loading, Badge } from "@nextui-org/react";
+import { Input, Radio, Textarea, Loading, Modal } from "@nextui-org/react";
 import getOrderTime from "services/orderTime";
 import { useRouter } from "next/router";
+import MapContainer from "containers/MapContainer";
 
 export default function Checkout({ handleShowModal }) {
   const router = useRouter();
@@ -17,6 +18,7 @@ export default function Checkout({ handleShowModal }) {
   const [note, setNote] = useState("");
   const [selectedOrderTime, setSelectedOrderTime] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     setOrderTime(getOrderTime());
@@ -55,6 +57,10 @@ export default function Checkout({ handleShowModal }) {
       shallow: true,
       locale: false,
     });
+  };
+
+  const handleShowMap = () => {
+    setShowMap(false);
   };
 
   return (
@@ -115,6 +121,14 @@ export default function Checkout({ handleShowModal }) {
               <p className="text-xs text-gray-700">
                 *El envío es con cargo adicional y no corre por nuestra cuenta
               </p>
+              <button
+                onClick={() => setShowMap(true)}
+                className="w-11/12 h-10 bg-slate-200 rounded-lg mt-4 flex items-center justify-center"
+              >
+                <p className="text-slate-700 font-bold">
+                  Consultar mapa con precios
+                </p>
+              </button>
             </>
           ) : null}
         </div>
@@ -164,6 +178,16 @@ export default function Checkout({ handleShowModal }) {
           </button>
         </div>
       </div>
+      <Modal
+        open={showMap}
+        onClose={handleShowMap}
+        closeButton
+        blur
+        width="400px"
+        height="100%"
+      >
+        <MapContainer />
+      </Modal>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function CardDish({ product }) {
     <Card
       isPressable
       isHoverable
-      className="relative shadow-lg animate__animated animate__bounceInUp  shadow-slate-600 cursor-pointer hover:shadow-slate-700 border-slate-700"
+      className="relative shadow-lg animate__animated animate__bounceInUp  shadow-slate-600 cursor-pointer hover:shadow-slate-700 border-slate-700 border-2 rounded-2xl"
       css={{
         w: "100%",
         h: "300px",
@@ -63,7 +63,7 @@ export default function CardDish({ product }) {
           bottom: 0,
           zIndex: 1,
         }}
-        className="bg-gradient-to-r border-t-2 border-slate-800
+        className=" border-t-2 border-slate-800
         bg-white
          md:p-4 lg:p-4 xl:p-4 2xl:p-4 3xl:p-4 4xl:p-4"
       >
