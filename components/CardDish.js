@@ -13,7 +13,7 @@ export default function CardDish({ product }) {
     <Card
       isPressable
       isHoverable
-      className="group shadow-lg animate__animated animate__bounceInUp shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 hover:scale-105"
+      className="relative shadow-lg animate__animated animate__bounceInUp  shadow-slate-600 cursor-pointer hover:shadow-slate-700 border-slate-700"
       css={{
         w: "100%",
         h: "300px",
@@ -55,7 +55,6 @@ export default function CardDish({ product }) {
           height="100%"
           objectFit="cover"
           alt="Card example background"
-          className="group_hover:object-scale-down transition duration-500 ease-in-out"
         />
       </Card.Body>
       <Card.Footer

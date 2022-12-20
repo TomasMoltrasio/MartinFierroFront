@@ -47,6 +47,7 @@ export default function Checkout({ handleShowModal }) {
       cart,
       selectedOrderTime,
     };
+    console.log(data);
     const url = sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
@@ -143,7 +144,7 @@ export default function Checkout({ handleShowModal }) {
         <div className="flex flex-col items-center justify-center w-full h-full">
           <button
             aria-label="Confirmar pedido"
-            className="w-2/3 my-4 h-10 border-2 text-white font-semibold border-green-800 bg-green-500 rounded-lg disabled:bg-red-500 disabled:border-red-600 hover:scale-110 transition duration-1000 ease-linear"
+            className="w-2/3 my-4 h-10 border-2 text-white font-semibold border-green-800 bg-green-500 rounded-lg disabled:bg-red-500 disabled:border-red-600 hover:scale-110 transition duration-300 ease-linear"
             onClick={handleSendWhatsappMessage}
             disabled={
               !name ||

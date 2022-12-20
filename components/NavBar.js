@@ -72,7 +72,13 @@ export default function NavBar() {
         zIndex: 1000,
       }}
     >
-      <Navbar.Toggle showIn="xs" id="navbar-toggle">
+      <Navbar.Toggle
+        showIn="xs"
+        id="navbar-toggle"
+        aria-label="
+      Toggle navigation
+      "
+      >
         <HiOutlineMenu size={30} />
       </Navbar.Toggle>
       <Navbar.Brand
@@ -84,7 +90,7 @@ export default function NavBar() {
       >
         <NextLink href="/">
           <Image
-            src="/LogoMartinFierro.svg"
+            src="/Logo-MF-Navidad.svg"
             alt="Logo Martin Fierro"
             width={80}
             height={80}
