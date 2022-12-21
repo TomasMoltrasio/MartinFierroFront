@@ -6,11 +6,7 @@ module.exports = {
     "./containers/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        martinfierro: "url('/LogoMartínFierro.svg')",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

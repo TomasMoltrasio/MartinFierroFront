@@ -3,7 +3,6 @@ import {
   Navbar,
   Link,
   Dropdown,
-  Image,
   Badge,
   Avatar,
   Modal,
@@ -18,6 +17,7 @@ import UserContext from "context/UserContext";
 import { MdOutlineAddCircle, MdOutlineChangeCircle } from "react-icons/md";
 import CreateProduct from "./CreateProduct";
 import ChangeDay from "./ChangeDay";
+import Image from "next/image";
 
 export default function NavBar() {
   const router = useRouter();
@@ -96,6 +96,7 @@ export default function NavBar() {
             height={80}
             objectFit="contain"
             className="cursor-pointer"
+            priority={true}
           />
         </NextLink>
       </Navbar.Brand>
@@ -147,7 +148,7 @@ export default function NavBar() {
                     aria-label="User menu"
                     color="primary"
                     size="md"
-                    src="/LogoMartinFierro.svg"
+                    src="/Logo-MF-Navidad.svg"
                   />
                 </Dropdown.Trigger>
               </Navbar.Item>

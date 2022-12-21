@@ -1,6 +1,7 @@
-import { Card, Col, Row, Button, Text, Image, Modal } from "@nextui-org/react";
+import { Card, Col, Row, Button, Text, Modal } from "@nextui-org/react";
 import { useState } from "react";
 import ProductToCart from "./ProductToCart";
+import Image from "next/image";
 
 export default function CardDish({ product }) {
   const [showModal, setShowModal] = useState(false);
@@ -52,9 +53,10 @@ export default function CardDish({ product }) {
         <Card.Image
           src={product.image}
           width="100%"
-          height="100%"
+          height="300px"
           objectFit="cover"
           alt="Card example background"
+          showSkeleton={true}
         />
       </Card.Body>
       <Card.Footer
