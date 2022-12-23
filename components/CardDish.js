@@ -55,7 +55,7 @@ export default function CardDish({ product }) {
           width="100%"
           height="300px"
           objectFit="cover"
-          alt="Card example background"
+          alt="Imagen de plato del dia"
           showSkeleton={true}
         />
       </Card.Body>

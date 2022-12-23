@@ -46,18 +46,13 @@ export default function CardMenu({ product, nameId }) {
         <Card.Image
           src={nameId === "Menu" ? product.image : `../../${product.image}`}
           width="100%"
-          height="100%"
+          height="300px"
           objectFit="cover"
-          alt="Card example background"
+          alt="Product Image"
           loading="lazy"
         />
       </Card.Body>
       <Card.Footer
-        css={{
-          borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-          bottom: 0,
-          zIndex: 1,
-        }}
         className="border-t-2 border-slate-800
         bg-white
          md:p-4 lg:p-4 xl:p-4 2xl:p-4 3xl:p-4 4xl:p-4"

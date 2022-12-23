@@ -6,7 +6,6 @@ import {
   Badge,
   Avatar,
   Modal,
-  css,
 } from "@nextui-org/react";
 import { HiOutlineMenu } from "react-icons/hi";
 import { ImCart } from "react-icons/im";
