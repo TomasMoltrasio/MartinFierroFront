@@ -106,22 +106,32 @@ export default function NavBar() {
         className="text-xl font-extralight"
       >
         <NextLink href="/">
-          <Navbar.Link isActive={router.pathname === "/" ? true : false}>
+          <Navbar.Link
+            href="/"
+            isActive={router.pathname === "/" ? true : false}
+          >
             Inicio
           </Navbar.Link>
         </NextLink>
         <NextLink href="/menu">
-          <Navbar.Link isActive={router.pathname === "/menu" ? true : false}>
+          <Navbar.Link
+            href="/menu"
+            isActive={router.pathname === "/menu" ? true : false}
+          >
             Menú
           </Navbar.Link>
         </NextLink>
         <NextLink href="/salon">
-          <Navbar.Link isActive={router.pathname === "/salon" ? true : false}>
+          <Navbar.Link
+            href="/salon"
+            isActive={router.pathname === "/salon" ? true : false}
+          >
             Nuestro salón
           </Navbar.Link>
         </NextLink>
         <NextLink href="/contacto">
           <Navbar.Link
+            href="/contacto"
             isActive={router.pathname === "/contacto" ? true : false}
           >
             Contacto
@@ -206,14 +216,16 @@ export default function NavBar() {
                 },
               }}
             >
-              <Badge
-                content={cartCount}
-                isInvisible={cartCount === 0 ? true : false}
-                color="error"
-                className="cursor-pointer"
-              >
-                <ImCart size={30} className="cursor-pointer" />
-              </Badge>
+              <li className="relative">
+                <Badge
+                  content={cartCount}
+                  isInvisible={cartCount === 0 ? true : false}
+                  color="error"
+                  className="cursor-pointer"
+                >
+                  <ImCart size={30} className="cursor-pointer" />
+                </Badge>
+              </li>
             </Navbar.Content>
           </NextLink>
         </>
