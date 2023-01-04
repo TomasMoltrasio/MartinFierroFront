@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
             <meta name="google-site-verification" content="verified" />
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 
-            <link rel="icon" href="/Logo-MF-Navidad.svg" />
+            <link rel="icon" href="/LogoMartinFierro.svg" />
           </Head>
           <Layout>
             <Component {...pageProps} />

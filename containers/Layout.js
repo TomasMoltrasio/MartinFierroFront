@@ -6,9 +6,6 @@ import Head from "next/head";
 export default function Layout({ children }) {
   return (
     <div className="h-screen min-h-screen w-screen flex flex-auto flex-col items-center justify-between">
-      <Head>
-        <script src="https://app.embed.im/snow.js" defer></script>
-      </Head>
       <Header />
       <Container
         as="main"

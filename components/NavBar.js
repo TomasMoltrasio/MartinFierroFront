@@ -89,7 +89,7 @@ export default function NavBar() {
       >
         <NextLink href="/">
           <Image
-            src="/Logo-MF-Navidad.svg"
+            src="/LogoMartinFierro.svg"
             alt="Logo Martin Fierro"
             width={80}
             height={80}
@@ -157,7 +157,7 @@ export default function NavBar() {
                     aria-label="User menu"
                     color="primary"
                     size="md"
-                    src="/Logo-MF-Navidad.svg"
+                    src="/LogoMartinFierro.svg"
                   />
                 </Dropdown.Trigger>
               </Navbar.Item>
