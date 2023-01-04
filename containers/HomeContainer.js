@@ -9,9 +9,15 @@ export default function HomeContainer({ product }) {
 
   return (
     <div className="flex flex-col w-full h-max items-center justify-start">
+      <Text
+        h1
+        className="hidden text-center text-gray-800 text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-5xl space-y-2"
+      >
+        Martin Fierro Comida Casera
+      </Text>
       {todayName !== "lunes" ? (
         <>
-          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown md:border-4 md:border-x-indigo-700 md:border-y-indigo-400 md:border-opacity-70 rounded-lg md:shadow-xl items-center justify-center md:mt-20 py-6 w-full h-max my-4 gap-4">
+          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown md:border-4 md:border-x-indigo-700 md:border-y-indigo-400 md:border-opacity-70 rounded-lg md:shadow-xl items-center justify-center md:mt-4 py-6 w-full h-max my-4 gap-4">
             {" "}
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Text
