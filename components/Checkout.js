@@ -49,7 +49,6 @@ export default function Checkout({ handleShowModal }) {
       cart,
       selectedOrderTime,
     };
-    console.log(data);
     const url = sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
