@@ -6,7 +6,7 @@ export default function Home({ product }) {
   return (
     <>
       <Head>
-        <title>Inicio</title>
+        <title>Martin Fierro</title>
       </Head>
       <HomeContainer product={product} />;
     </>

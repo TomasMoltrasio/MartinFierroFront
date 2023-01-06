@@ -102,7 +102,7 @@ export default function NavBar() {
       <Navbar.Content
         activeColor="primary"
         hideIn="xs"
-        variant="underline"
+        variant="underline-rounded"
         className="text-xl font-extralight"
       >
         <NextLink href="/">
