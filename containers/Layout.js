@@ -26,6 +26,9 @@ export default function Layout({ children }) {
           <h1 className="text-2xl font-bold text-gray-800">
             Martin Fierro Comida Casera
           </h1>
+          <h2 className="text-xl font-bold text-gray-800">
+            Comida casera para disfrutar en tu casa o en nuestro salón
+          </h2>
           <h3 className="text-xl font-bold text-gray-800">
             Preparate para hacer tu pedido...
           </h3>
