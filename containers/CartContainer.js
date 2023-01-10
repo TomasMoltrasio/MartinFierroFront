@@ -5,6 +5,7 @@ import { Modal, Text, Button } from "@nextui-org/react";
 import Checkout from "components/Checkout";
 import { MdRestaurantMenu } from "react-icons/md";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function CartContainer() {
   const { state, clearCart } = useContext(CartContext);
@@ -27,6 +28,20 @@ export default function CartContainer() {
       }, 0);
     }
     return 0;
+  };
+
+  const existDrink = () => {
+    if (cart && cart.length > 0) {
+      return cart.some((product) => product.category === "Bebidas");
+    }
+    return false;
+  };
+
+  const existDessert = () => {
+    if (cart && cart.length > 0) {
+      return cart.some((product) => product.category === "Postres");
+    }
+    return false;
   };
 
   return (
@@ -54,7 +69,7 @@ export default function CartContainer() {
           <div className="flex flex-col items-center justify-center w-full h-full">
             <button
               aria-label="Confirmar pedido"
-              className="w-11/12 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:scale-110 border-green-600"
+              className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:bg-green-600 hover:text-white hover:border-green-900 border-green-600"
               onClick={() => setShowModal(true)}
               disabled={!cart || cart.length === 0}
             >
@@ -64,12 +79,34 @@ export default function CartContainer() {
             </button>
             <button
               aria-label="Vaciar carrito"
-              className="w-11/12 sm:1/2 md:w-1/2 lg:w-1/2 xl:w-1/4 2xl:w-1/4 3xl:w-1/4 4xl:w-1/4 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:scale-110 border-red-500"
+              className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:bg-red-600 hover:text-white hover:border-red-900 border-red-500"
               onClick={handleClearCart}
               disabled={!cart || cart.length === 0}
             >
               Vaciar carrito
             </button>
+            <div className="flex flex-col md:flex-row items-center justify-center w-full md:space-x-1">
+              {!existDrink() && (
+                <Link href="/menu/8">
+                  <a
+                    aria-label="Ver bebidas"
+                    className="w-11/12 md:w-1/6 h-10 flex justify-center font-semibold text-blue-500 rounded-md mb-1 border-2 disabled:hidden hover:bg-blue-500 hover:text-white transition border-blue-500"
+                  >
+                    ¿Querés agregar alguna bebida?
+                  </a>
+                </Link>
+              )}
+              {!existDessert() && (
+                <Link href="/menu/7">
+                  <a
+                    aria-label="Ver postres"
+                    className="w-11/12 md:w-1/6 h-10 flex justify-center font-semibold text-blue-500 rounded-md mb-1 border-2 disabled:hidden hover:bg-blue-500 hover:text-white transition border-blue-500"
+                  >
+                    ¿Querés agregar algún postre?
+                  </a>
+                </Link>
+              )}
+            </div>
           </div>
         </>
       ) : (

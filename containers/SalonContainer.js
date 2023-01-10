@@ -53,9 +53,9 @@ export default function SalonContainer() {
           effect={"cards"}
           grabCursor={true}
           modules={[EffectCards]}
-          spaceBetween={50}
+          spaceBetween={10}
           slidesPerView={1}
-          rewind={true}
+          loop={true}
           className="w-full h-max"
         >
           {images.map((image, index) => (
