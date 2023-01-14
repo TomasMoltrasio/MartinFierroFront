@@ -35,6 +35,7 @@ export async function getStaticProps({ params }) {
   };
   const nameId = categories[id];
   const products = await getProductsByCategory(nameId);
+  products.sort((a, b) => a.name.localeCompare(b.name));
   products.sort((a, b) => a.price - b.price);
 
   return {

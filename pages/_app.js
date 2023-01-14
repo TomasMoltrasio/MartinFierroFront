@@ -29,12 +29,10 @@ function MyApp({ Component, pageProps }) {
               name="robots"
               content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
             />
-
             <meta name="google" content="notranslate" />
             <meta name="google" content="nositelinkssearchbox" />
             <meta name="google-site-verification" content="verified" />
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-
             <link rel="icon" href="/LogoMartinFierro.svg" />
           </Head>
           <Layout>

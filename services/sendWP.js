@@ -34,9 +34,9 @@ export default function sendWhatsappMessage(body) {
   const { name, cart, address, selectedOrderTime, note, between } = body;
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
   const message =
-    `*Nueva Orden*%0A%0A*Nombre:*${name}${getAddress(address)}${getBetween(
+    `*Nueva Orden*%0A%0A*Nombre:* ${name}${getAddress(address)}${getBetween(
       between
-    )}%0A*Horario:*${selectedOrderTime}${getNote(
+    )}%0A*Horario:* ${selectedOrderTime}${getNote(
       note
     )}%0A%0A*Productos:*%0A${cart
       .map((item) => {
