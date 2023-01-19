@@ -12,7 +12,10 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
       <Head>
         <title>{nameId}</title>
       </Head>
-      <section className="w-full h-full flex flex-col items-center justify-start">
+      <section
+        id={nameId}
+        className="w-full h-full flex flex-col items-center justify-start"
+      >
         <div className="w-full h-12 flex flex-row items-center justify-between px-4">
           <NextLink href="/menu">
             <div className="h-12 flex flex-row items-center justify-center cursor-pointer">
