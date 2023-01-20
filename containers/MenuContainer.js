@@ -1,12 +1,18 @@
 import { Grid } from "@nextui-org/react";
-import CardMenu from "components/CardMenu";
-import CardEmpanada from "components/CardEmpanada";
 import NextLink from "next/link";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Head from "next/head";
 import { Fragment } from "react";
+import dynamic from "next/dynamic";
 
 export default function MenuContainer({ products, nameId = "Menu" }) {
+  const CardMenu = dynamic(() => import("components/CardMenu"), {
+    ssr: true,
+  });
+  const CardEmpanada = dynamic(() => import("components/CardEmpanada"), {
+    ssr: true,
+  });
+
   return (
     <>
       <Head>
@@ -14,7 +20,7 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
       </Head>
       <section
         id={nameId}
-        className="w-full h-full flex flex-col items-center justify-start"
+        className="top w-full h-full flex flex-col items-center justify-start"
       >
         <div className="w-full h-12 flex flex-row items-center justify-between px-4">
           <NextLink href="/menu">
@@ -23,7 +29,7 @@ export default function MenuContainer({ products, nameId = "Menu" }) {
               <h3 className="text-xl font-bold">Menu</h3>
             </div>
           </NextLink>
-          <h3 className="text-2xl font-bold text-center">{nameId}</h3>
+          <h3 className="text-xl font-bold text-center">{nameId}</h3>
         </div>
         <Grid.Container gap={2}>
           {products.map((product) => (

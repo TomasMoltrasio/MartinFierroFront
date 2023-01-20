@@ -62,6 +62,8 @@ export default function Checkout({ handleShowModal }) {
     setShowMap(false);
   };
 
+  console.log("cart", cart);
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-start">
       <div className="w-full h-1/3 flex flex-col items-center justify-center">

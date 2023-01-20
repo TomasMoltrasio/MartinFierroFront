@@ -1,14 +1,21 @@
-import ProductDashboard from "components/ProductDashboard";
 import { useRouter } from "next/router";
 import { FiRefreshCcw } from "react-icons/fi";
 import validated from "services/validate";
 import { useEffect } from "react";
 import Cookies from "universal-cookie";
+import dynamic from "next/dynamic";
 
 export default function DashboardContainer({ products }) {
   const router = useRouter();
   const cookies = new Cookies();
   const user = cookies.get("user");
+
+  const ProductDashboard = dynamic(
+    () => import("components/ProductDashboard"),
+    {
+      ssr: true,
+    }
+  );
 
   useEffect(() => {
     if (!user?.token) router.push("/login");

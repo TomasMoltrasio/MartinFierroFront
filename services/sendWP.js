@@ -30,6 +30,14 @@ const getNote = (note) => {
   }
 };
 
+const getGarnish = (garnish) => {
+  if (garnish === "nada ") {
+    return "sin guarnición";
+  } else {
+    return `con ${garnish}`;
+  }
+};
+
 export default function sendWhatsappMessage(body) {
   const { name, cart, address, selectedOrderTime, note, between } = body;
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -56,7 +64,9 @@ export default function sendWhatsappMessage(body) {
         } else if (item.garnish === " ") {
           return `${item.name} ${item.of} - ${item.quantity} x $${item.price}`;
         } else {
-          return `${item.name} ${item.of} con ${item.garnish} - ${item.quantity} x $${item.price}`;
+          return `${item.name} ${item.of} ${getGarnish(item.garnish)} - ${
+            item.quantity
+          } x $${item.price}`;
         }
       })
       .join("%0A")}` + `%0A%0A*Total:* $${total}`;

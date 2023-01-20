@@ -2,12 +2,16 @@ import { Card, Text, Row, Button, Col, Image, Modal } from "@nextui-org/react";
 import { useState, useContext } from "react";
 import ProductToCart from "./ProductToCart";
 import UserContext from "context/UserContext";
-import CreateProduct from "./CreateProduct";
+import dynamic from "next/dynamic";
 
 export default function CardMenu({ product, nameId }) {
   const [showModal, setShowModal] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false);
   const { user } = useContext(UserContext);
+
+  const CreateProduct = dynamic(() => import("./CreateProduct"), {
+    ssr: false,
+  });
 
   const handleShowModal = () => {
     setShowModal(false);
@@ -22,7 +26,7 @@ export default function CardMenu({ product, nameId }) {
       isPressable
       isHoverable
       draggable={false}
-      className={`shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700 `}
+      className={`shadow-lg shadow-slate-600 border-2 border-slate-600 cursor-pointer hover:shadow-slate-700 hover:border-slate-700  `}
       css={{ w: "100%", h: "300px" }}
       onPress={() => {
         user && user.token !== null

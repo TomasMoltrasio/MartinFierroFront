@@ -2,7 +2,6 @@ import { Image } from "@nextui-org/react";
 import { useState } from "react";
 import { BsWhatsapp } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
 import { EffectCards } from "swiper";
 
 // Import Swiper styles
@@ -30,21 +29,6 @@ export default function SalonContainer() {
     "salon/salon-17.webp",
     "salon/salon-18.webp",
   ];
-  const [index, setIndex] = useState(0);
-  const handleNext = () => {
-    if (index < images.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
-  };
-  const handlePrev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    } else {
-      setIndex(images.length - 1);
-    }
-  };
 
   return (
     <div className="w-full h-max flex flex-col items-center justify-start">
