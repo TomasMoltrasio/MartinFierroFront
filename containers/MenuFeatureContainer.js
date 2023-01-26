@@ -49,7 +49,7 @@ export default function MenuFeatureContainer() {
   return (
     <>
       <Head>
-        <title>Menu</title>
+        <title>Menú</title>
       </Head>
       <div className="flex flex-col flex-wrap items-center justify-center w-full h-max">
         <Grid.Container
