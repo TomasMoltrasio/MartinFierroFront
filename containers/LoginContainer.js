@@ -23,7 +23,7 @@ export default function LoginContainer() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Usuario o contraseña incorrectos",
+          text: "Usuario o contraseña incorrectos.",
         }).then(() => {
           setLoading(false);
         });
