@@ -37,7 +37,7 @@ export default function HomeContainer({ product }) {
               <div className="flex flex-col items-center justify-center w-full h-full">
                 <Button
                   aria-label="Hace tu pedido"
-                  className="w-11/12 md:w-4/12 h-12 text-black text-lg bg-white rounded-full shadow-md hover:shadow-none md:hover:w-6/12 transition-all duration-300 ease-linear transform"
+                  className="w-11/12 md:w-4/12 h-12 text-black text-lg bg-white rounded-full shadow-md hover:shadow-none md:hover:w-3/12 transition-all duration-300 ease-linear transform"
                   bordered
                   borderWeight={2}
                   color={"#000"}
