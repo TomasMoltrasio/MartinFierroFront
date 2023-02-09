@@ -104,14 +104,7 @@ export default function CardMenu({ product, nameId }) {
           </Col>
         </Row>
       </Card.Footer>
-      <Modal
-        open={showModal}
-        onClose={handleShowModal}
-        closeButton
-        blur
-        width="400px"
-        height="300px"
-      >
+      <Modal open={showModal} onClose={handleShowModal} closeButton blur>
         <ProductToCart product={product} handleShowModal={handleShowModal} />
       </Modal>
       <Modal

@@ -27,14 +27,7 @@ export default function CardDish({ product }) {
       }}
       onPress={() => setShowModal(true)}
     >
-      <Modal
-        open={showModal}
-        onClose={handleShowModal}
-        closeButton
-        blur
-        width="400px"
-        height="300px"
-      >
+      <Modal open={showModal} onClose={handleShowModal} closeButton blur>
         <ProductToCart product={product} handleShowModal={handleShowModal} />
       </Modal>
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>

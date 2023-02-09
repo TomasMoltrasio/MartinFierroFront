@@ -127,14 +127,7 @@ export default function CartContainer() {
           </Button>
         </div>
       )}
-      <Modal
-        open={showModal}
-        onClose={handleShowModal}
-        closeButton
-        blur
-        width="400px"
-        height="100%"
-      >
+      <Modal open={showModal} onClose={handleShowModal} closeButton blur>
         <Checkout handleShowModal={handleShowModal} />
       </Modal>
     </div>
