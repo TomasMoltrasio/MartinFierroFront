@@ -1,3 +1,5 @@
+const phoneNumber = "5492241527444";
+
 const getQuantity = (garnish) => {
   let quantity = 0;
   Object.keys(garnish).map((key) => {
@@ -62,14 +64,16 @@ export default function sendWhatsappMessage(body) {
             .filter((item) => item !== "")
             .join(", ")}) - x $${item.price}`;
         } else if (item.garnish === " ") {
-          return `${item.name} ${item.of} - ${item.quantity} x $${item.price}`;
+          return `${item.quantity} x ${item.name} ${item.of} - $${
+            item.price * item.quantity
+          }`;
         } else {
-          return `${item.name} ${item.of} ${getGarnish(item.garnish)} - ${
-            item.quantity
-          } x $${item.price}`;
+          return `${item.quantity} x ${item.name} ${item.of} ${getGarnish(
+            item.garnish
+          )} - $${item.price * item.quantity}`;
         }
       })
       .join("%0A")}` + `%0A%0A*Total:* $${total}`;
-  const url = `5492241527444?text=${message}`;
+  const url = `${phoneNumber}?text=${message}`;
   return url;
 }
