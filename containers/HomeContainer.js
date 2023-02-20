@@ -2,15 +2,33 @@ import { Text, Button } from "@nextui-org/react";
 import CardDish from "components/CardDish";
 import { MdRestaurantMenu } from "react-icons/md";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export default function HomeContainer({ product }) {
   const todayName = new Date().toLocaleDateString("es", { weekday: "long" });
   const router = useRouter();
 
+  const [daysOpen, setDaysOpen] = useState(false);
+
+  useEffect(() => {
+    const today = new Date().getDay();
+    if (
+      today === 3 ||
+      today === 4 ||
+      today === 5 ||
+      today === 6 ||
+      today === 0
+    ) {
+      setDaysOpen(true);
+    } else {
+      setDaysOpen(false);
+    }
+  }, []);
+
   return (
     <>
       <div className="flex flex-col w-full h-max items-center justify-start">
-        {todayName !== "lunes" ? (
+        {daysOpen ? (
           <>
             <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown md:border-4 md:border-x-indigo-700 md:border-y-indigo-400 md:border-opacity-70 rounded-lg md:shadow-xl items-center justify-center md:mt-4 py-6 w-full h-max my-4 gap-4">
               {" "}
@@ -71,7 +89,7 @@ export default function HomeContainer({ product }) {
           text-3xl
         "
             >
-              {`Hoy ${todayName} nos tomamos un descanso, volvemos mañana.`}
+              {`Hoy ${todayName} nos tomamos un descanso, volvemos el miercoles.`}
             </Text>
           </div>
         )}

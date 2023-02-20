@@ -44,7 +44,7 @@ const getOrderTime = () => {
     "23:15",
   ];
 
-  if (date.getDay !== 1) {
+  if (date.getDay() !== 1 && date.getDay() !== 2) {
     if (horaActual > "18:45" && horaActual < "23:30") {
       const actual = night.filter((time) => time > horaActual);
       return actual;
