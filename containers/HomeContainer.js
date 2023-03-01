@@ -69,6 +69,14 @@ export default function HomeContainer({ product }) {
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Text
                 h2
+                className="text-center text-gray-800 text-xl md:text-4xl mb-4 animate__animated animate__zoomInUp"
+              >
+                ¡10% de descuento pagando en efectivo o por transferencia!
+              </Text>
+            </div>
+            <div className="flex flex-col items-center justify-center w-full h-full">
+              <Text
+                h2
                 className="text-center text-gray-800 text-3xl mb-4 animate__animated animate__zoomInUp"
               >
                 {`Nuestro plato del día`}

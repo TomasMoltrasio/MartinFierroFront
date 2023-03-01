@@ -30,6 +30,14 @@ export default function CartContainer() {
     return 0;
   };
 
+  const getTotalWithDiscount = () => {
+    const discount = 0.1;
+    if (cart && cart.length > 0) {
+      return Math.round((getTotal() - getTotal() * discount) / 100) * 100;
+    }
+    return 0;
+  };
+
   const existDrink = () => {
     if (cart && cart.length > 0) {
       return cart.some((product) => product.category === "Bebidas");
@@ -67,6 +75,14 @@ export default function CartContainer() {
               ))}
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
+            <Text h3 className="text-center text-gray-800 text-lg mt-4">
+              Si abonas en efectivo o transferencia
+              <span className="text-gray-800 font-semibold"> $</span>
+              <span className="text-green-600 font-semibold">
+                {" "}
+                {getTotalWithDiscount()}
+              </span>
+            </Text>
             <button
               aria-label="Confirmar pedido"
               className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:bg-green-600 hover:text-white hover:border-green-900 border-green-600"

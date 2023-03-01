@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext, useState } from "react";
 import CartContext from "context/CartContext";
-import { Image, Button, Radio, Tooltip } from "@nextui-org/react";
+import { Image, Button, Text } from "@nextui-org/react";
 import { BsCartPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
@@ -10,7 +10,7 @@ export default function CardEmpanada({ product }) {
   const router = useRouter();
   const [quantity, setQuantity] = useState(0);
   const [of, setOf] = useState("fritas");
-  const [date, setDate] = useState(new Date());
+  // const [date, setDate] = useState(new Date());
   const optionTaste = [
     { name: "Carne", value: "carne" },
     { name: "Pollo", value: "pollo" },
@@ -77,7 +77,7 @@ export default function CardEmpanada({ product }) {
   const getTotal = () => {
     let docenas = Math.floor(quantity / 12);
     let unidades = quantity % 12;
-    let priceDocena = product.price * 12 - 20;
+    let priceDocena = product.price * 12 - 60;
     let priceUnidad = product.price;
     let total = docenas * priceDocena + unidades * priceUnidad;
     return total;
@@ -92,6 +92,11 @@ export default function CardEmpanada({ product }) {
           className="w-full h-64 rounded-t-2xl"
           objectFit="cover"
         />
+      </div>
+      <div className="w-full md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 3xl:w-3/12 h-fit flex flex-col items-center justify-between border-x-2 border-black ">
+        <Text h3 className="text-black font-semibold text-center">
+          Empanadas fritas
+        </Text>
       </div>
       <div className="w-full md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 3xl:w-3/12 border-2 pt-2 border-black rounded-bl-md rounded-br-md h-max flex flex-col items-center justify-between gap-0">
         {optionTaste.map((opTaste) => (
@@ -156,7 +161,7 @@ export default function CardEmpanada({ product }) {
             {quantity}
           </h3>
         </div>
-        <div className="w-full h-max flex flex-row items-center justify-center px-4">
+        {/* <div className="w-full h-max flex flex-row items-center justify-center px-4">
           <Radio.Group
             aria-label="of"
             value={of}
@@ -189,7 +194,7 @@ export default function CardEmpanada({ product }) {
               </Radio>
             </Tooltip>
           </Radio.Group>
-        </div>
+        </div> */}
         <p></p>
         <div className="w-full h-max flex flex-col items-center justify-center">
           <button

@@ -40,6 +40,14 @@ const getGarnish = (garnish) => {
   }
 };
 
+const getTotalWithDiscount = (total, cart) => {
+  const discount = 0.1;
+  if (cart && cart.length > 0) {
+    return Math.round((total - total * discount) / 100) * 100;
+  }
+  return 0;
+};
+
 export default function sendWhatsappMessage(body) {
   const { name, cart, address, selectedOrderTime, note, between } = body;
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -73,7 +81,9 @@ export default function sendWhatsappMessage(body) {
           )} - $${item.price * item.quantity}`;
         }
       })
-      .join("%0A")}` + `%0A%0A*Total:* $${total}`;
+      .join("%0A")}` +
+    `%0A%0A*Total:* $${total}` +
+    `%0A*Total con descuento:* $${getTotalWithDiscount(total, cart)}`;
   const url = `${phoneNumber}?text=${message}`;
   return url;
 }
