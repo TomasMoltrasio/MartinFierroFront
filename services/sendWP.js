@@ -1,4 +1,4 @@
-const phoneNumber = "5492241527444";
+const phoneNumber = "542241527444";
 
 const getQuantity = (garnish) => {
   let quantity = 0;

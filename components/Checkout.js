@@ -54,6 +54,11 @@ export default function Checkout({ handleShowModal }) {
     setBetween("");
   };
 
+  const openWhatsapp = (text) => {
+    const url = `https://wa.me/${text}`;
+    window.open(url, "_blank");
+  };
+
   const handleSendWhatsappMessage = async () => {
     setLoading(true);
     const data = {
@@ -67,10 +72,7 @@ export default function Checkout({ handleShowModal }) {
     const url = sendWhatsappMessage(data);
     clearCart();
     handleShowModal();
-    router.push(`https://wa.me/${url}`, `https://wa.me/${url}`, {
-      shallow: true,
-      locale: false,
-    });
+    openWhatsapp(url);
   };
 
   const handleShowMap = () => {

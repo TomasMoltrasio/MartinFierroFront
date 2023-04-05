@@ -57,7 +57,7 @@ export default function SalonContainer() {
         </Swiper>
       </div>
       <div className="w-full md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 h-max my-4 px-2 flex flex-row items-center justify-between">
-        <div className="group flex flex-row w-full items-center justify-center gap-2 p-1 rounded-xl border-2 px-4 border-black hover:scale-105 hover:border-lime-500 hover:text-slate-800 transition duration-300 ease-in-out hover:font-semibold">
+        <div className="group flex flex-row w-full items-center bg-lime-500 justify-center gap-2 p-1 rounded-xl border-2 px-4 border-black hover:scale-105 hover:border-lime-500 hover:text-slate-800 transition duration-300 ease-in-out hover:font-semibold">
           <a
             href="https://api.whatsapp.com/send?phone=+5492241527444&text=Hola,%20queria%20reservar%20una%20mesa"
             target="_blank"
@@ -67,7 +67,7 @@ export default function SalonContainer() {
             <h2 className="text-xl font-normal text-center group-hover:hidden">
               Hace tu reserva
             </h2>
-            <BsWhatsapp className="group-hover:text-lime-500" size={24} />
+            <BsWhatsapp size={24} />
           </a>
         </div>
       </div>
