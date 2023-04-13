@@ -268,7 +268,7 @@ export default function NavBar() {
         onClose={handleShowModalDay}
         closeButton
         blur
-        width="100%"
+        width="500px"
         height="100%"
       >
         <ChangeDay handleShowModalDay={handleShowModalDay} />

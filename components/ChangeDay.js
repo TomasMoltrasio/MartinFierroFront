@@ -53,7 +53,7 @@ export default function ChangeDay({ handleShowModalDay }) {
             w-full
             h-max
             border-b-2
-            border-slate-300
+            border-slate-600
             px-4
             "
             key={`plato-del-dia-${product._id}`}
