@@ -15,6 +15,7 @@ export default function CardDish({ product }) {
       isPressable
       isHoverable
       className="relative shadow-lg animate__animated animate__bounceInUp  shadow-slate-600 cursor-pointer hover:shadow-slate-700 border-slate-700 border-2 rounded-2xl"
+      onPress={() => setShowModal(true)}
       css={{
         w: "100%",
         h: "300px",
@@ -25,7 +26,6 @@ export default function CardDish({ product }) {
         "@3xl": { w: "30%", h: "300px" },
         "@4xl": { w: "30%", h: "300px" },
       }}
-      onPress={() => setShowModal(true)}
     >
       <Modal open={showModal} onClose={handleShowModal} closeButton blur>
         <ProductToCart product={product} handleShowModal={handleShowModal} />

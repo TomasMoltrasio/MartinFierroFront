@@ -76,7 +76,7 @@ export default function CartContainer() {
           </div>
           <div className="flex flex-col items-center justify-center w-full h-full">
             <Text h3 className="text-center text-gray-800 text-lg mt-4">
-              Si abonas en efectivo o transferencia
+              Si abonas en efectivo
               <span className="text-gray-800 font-semibold"> $</span>
               <span className="text-green-600 font-semibold">
                 {" "}

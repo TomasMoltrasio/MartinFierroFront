@@ -28,10 +28,10 @@ export default function HomeContainer({ product }) {
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-full items-center justify-start p-4">
+    <div className="flex flex-col w-full h-full items-center justify-center p-4 gap-4">
       {daysOpen ? (
         <>
-          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown md:border-4 md:border-x-indigo-700 md:border-y-indigo-400 md:border-opacity-70 rounded-lg md:shadow-xl items-center justify-center md:mt-4 py-6 w-full h-max my-4 gap-4">
+          <div className="flex flex-col bg-indigo-900/20 md:flex-row animate__animated animate__fadeInDown md:border-4 md:border-x-indigo-700 md:border-y-indigo-400 md:border-opacity-70 rounded-lg md:shadow-xl items-center justify-center md:mt-4 py-6 w-full h-max ">
             {" "}
             <div className="flex flex-col items-center justify-center w-full h-full">
               <Text
@@ -67,15 +67,15 @@ export default function HomeContainer({ product }) {
               </Button>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center w-full h-full">
+          <div className="flex flex-col items-center justify-center p-2 w-full h-max">
             <Text
               h2
               className="text-center text-gray-800 text-xl md:text-4xl mb-4 animate__animated animate__zoomInUp"
             >
-              ¡10% de descuento pagando en efectivo o por transferencia!
+              ¡10% de descuento abonando en efectivo!
             </Text>
           </div>
-          <div className="flex flex-col items-center justify-center w-full h-full">
+          <div className="flex flex-col items-center justify-start w-full h-max">
             <Text
               h2
               className="text-center text-gray-800 text-3xl mb-4 animate__animated animate__zoomInUp"
