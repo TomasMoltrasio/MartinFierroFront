@@ -14,7 +14,7 @@ export default function CardDish({ product }) {
     <Card
       isPressable
       isHoverable
-      className="relative shadow-lg animate__animated animate__bounceInUp  shadow-slate-600 cursor-pointer hover:shadow-slate-700 border-slate-700 border-2 rounded-2xl"
+      className="relative shadow-lg animate__animated animate__zoomIn  shadow-slate-600 cursor-pointer hover:shadow-slate-700 border-slate-700 border-2 rounded-2xl"
       onPress={() => setShowModal(true)}
       css={{
         w: "100%",

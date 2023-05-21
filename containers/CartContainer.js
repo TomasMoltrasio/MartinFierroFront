@@ -78,14 +78,14 @@ export default function CartContainer() {
             <Text h3 className="text-center text-gray-800 text-lg mt-4">
               Si abonas en efectivo
               <span className="text-gray-800 font-semibold"> $</span>
-              <span className="text-green-600 font-semibold">
+              <span className="text-gray-900 font-semibold">
                 {" "}
                 {getTotalWithDiscount()}
               </span>
             </Text>
             <button
               aria-label="Confirmar pedido"
-              className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:bg-green-600 hover:text-white hover:border-green-900 border-green-600"
+              className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 h-10 font-semibold text-green-600 rounded-md mb-2 mt-4 border-2 disabled:hidden hover:bg-green-600 hover:text-white hover:border-green-900 border-green-600 flex-wrap"
               onClick={() => setShowModal(true)}
               disabled={!cart || cart.length === 0}
             >
@@ -95,7 +95,7 @@ export default function CartContainer() {
             </button>
             <button
               aria-label="Vaciar carrito"
-              className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:bg-red-600 hover:text-white hover:border-red-900 border-red-500"
+              className="w-11/12 sm:w-7/12 md:w-7/12 lg:w-7/12 xl:w-4/12 2xl:w-4/12 3xl:w-4/12 4xl:w-4/12 flex-wrap h-10 font-semibold text-red-500 rounded-md mb-4 border-2 disabled:hidden hover:bg-red-600 hover:text-white hover:border-red-900 border-red-500"
               onClick={handleClearCart}
               disabled={!cart || cart.length === 0}
             >
@@ -106,7 +106,7 @@ export default function CartContainer() {
                 <Link href="/menu/8">
                   <a
                     aria-label="Ver bebidas"
-                    className="w-11/12 md:w-1/6 h-10 flex justify-center font-semibold text-blue-500 rounded-md mb-1 border-2 disabled:hidden hover:bg-blue-500 hover:text-white transition border-blue-500"
+                    className="w-11/12 md:w-1/6 h-10 flex flex-wrap justify-center font-semibold text-blue-500 rounded-md mb-1 border-2 disabled:hidden hover:bg-blue-500 hover:text-white transition border-blue-500"
                   >
                     ¿Querés agregar alguna bebida?
                   </a>
@@ -116,7 +116,7 @@ export default function CartContainer() {
                 <Link href="/menu/7">
                   <a
                     aria-label="Ver postres"
-                    className="w-11/12 md:w-1/6 h-10 flex justify-center font-semibold text-blue-500 rounded-md mb-1 border-2 disabled:hidden hover:bg-blue-500 hover:text-white transition border-blue-500"
+                    className="w-11/12 md:w-1/6 h-10 flex flex-wrap justify-center font-semibold text-blue-500 rounded-md mb-1 border-2 disabled:hidden hover:bg-blue-500 hover:text-white transition border-blue-500"
                   >
                     ¿Querés agregar algún postre?
                   </a>

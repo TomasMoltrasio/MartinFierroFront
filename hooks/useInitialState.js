@@ -21,7 +21,10 @@ const useInitialState = () => {
     );
 
     if (productInCart) {
-      if (productInCart.garnish === product.garnish) {
+      if (
+        productInCart.garnish === product.garnish &&
+        product.of === productInCart.of
+      ) {
         productInCart.quantity += quantity;
       } else {
         newCart.push({ ...product, quantity });
