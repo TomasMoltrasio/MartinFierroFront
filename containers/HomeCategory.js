@@ -19,11 +19,11 @@ export default function HomeCategory() {
   return (
     <>
       <div className="flex flex-row flex-wrap items-center justify-between w-full md:w-1/3 h-max gap-4">
-        <h2 className="text-lg md:text-2xl font-medium text-center">
+        <h2 className="text-base md:text-2xl font-medium text-center">
           Nuestro menú
         </h2>
         <Link href="/menu">
-          <a className="text-base md:text-xl font-bold text-center text-blue-400">
+          <a className="text-sm md:text-base font-bold text-center text-blue-400">
             Accede al menú completo
             <BiRightArrowAlt className="inline-block" />
           </a>
