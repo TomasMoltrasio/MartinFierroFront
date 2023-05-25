@@ -1,5 +1,4 @@
 import { Image } from "@nextui-org/react";
-import { useState } from "react";
 import { BsWhatsapp } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper";
