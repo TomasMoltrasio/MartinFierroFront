@@ -23,7 +23,7 @@ export default function Layout({ children }) {
           <Container
             as="main"
             xl
-            className="flex-auto flex flex-col items-center justify-center bg-gradient-to-b from-indigo-600/10 via-indigo-600/20 to-indigo-600/30"
+            className="flex-auto flex flex-col items-center justify-center bg-slate-100"
           >
             {children}
           </Container>
