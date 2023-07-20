@@ -67,7 +67,7 @@ export default function CreateProduct({
       if (response) {
         await validated("/menu").finally(() => {
           Swal.fire({
-            title: "Producto creado",
+            title: "Producto creado con exito",
             icon: "success",
             confirmButtonText: "Ok",
           }).then(() => {
