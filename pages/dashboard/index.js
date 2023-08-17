@@ -15,9 +15,11 @@ export default function Dashboard({ products }) {
 
 export async function getStaticProps() {
   const products = await getAllProducts();
+  const productsSorted = products?.sort((a, b) => a.price - b.price);
+
   return {
     props: {
-      products,
+      products: productsSorted,
     },
   };
 }

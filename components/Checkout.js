@@ -1,14 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import CartContext from "context/CartContext";
 import sendWhatsappMessage from "services/sendWP";
-import {
-  Input,
-  Radio,
-  Textarea,
-  Loading,
-  Modal,
-  Text,
-} from "@nextui-org/react";
+import { Input, Radio, Textarea, Loading, Modal } from "@nextui-org/react";
 import getOrderTime from "services/orderTime";
 import { useRouter } from "next/router";
 import MapContainer from "containers/MapContainer";
@@ -36,14 +29,6 @@ export default function Checkout({ handleShowModal }) {
       return cart.reduce((acc, product) => {
         return acc + product.price * product.quantity;
       }, 0);
-    }
-    return 0;
-  };
-
-  const getTotalWithDiscount = () => {
-    const discount = 0.1;
-    if (cart && cart.length > 0) {
-      return Math.round((getTotal() - getTotal() * discount) / 100) * 100;
     }
     return 0;
   };
@@ -174,14 +159,6 @@ export default function Checkout({ handleShowModal }) {
       </div>
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <Text h3 className="text-center text-gray-800 text-lg mt-4">
-            Si abonas en efectivo
-            <span className="text-gray-800 font-semibold"> $</span>
-            <span className="text-green-600 font-semibold">
-              {" "}
-              {getTotalWithDiscount()}
-            </span>
-          </Text>
           <button
             aria-label="Confirmar pedido"
             className="w-2/3 my-4 h-10 border-2 text-white font-semibold border-green-800 bg-green-500 rounded-lg disabled:bg-red-500 disabled:border-red-600 hover:scale-110 transition duration-300 ease-linear"
