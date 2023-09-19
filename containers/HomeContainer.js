@@ -42,7 +42,7 @@ export default function HomeContainer({ product }) {
           text-3xl
         "
           >
-            {`Hoy ${todayName} nos tomamos un descanso, volvemos el miercoles.`}
+            {`Hoy ${todayName} nos tomamos un descanso, volvemos el miercoles`}
           </Text>
         </div>
       )}
