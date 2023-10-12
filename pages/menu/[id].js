@@ -10,7 +10,7 @@ export default function MenuSingle({ products, nameId }) {
 }
 
 export async function getStaticPaths() {
-  const categories = 8;
+  const categories = 7;
   const paths = [];
   for (let i = 1; i <= categories; i++) {
     paths.push({ params: { id: i.toString() } });
@@ -25,13 +25,12 @@ export async function getStaticProps({ params }) {
   const { id } = params;
   const categories = {
     1: "Meganesas",
-    2: "Picadas",
-    3: "Empanadas",
-    4: "Minutas",
-    5: "Pastas",
-    6: "Acompañamientos",
-    7: "Postres",
-    8: "Bebidas",
+    2: "Empanadas",
+    3: "Minutas",
+    4: "Pastas",
+    5: "Acompañamientos",
+    6: "Postres",
+    7: "Bebidas",
   };
   const nameId = categories[id];
   const products = await getProductsByCategory(nameId);

@@ -10,6 +10,7 @@ export default function ChangeDay({ handleShowModalDay }) {
   useEffect(() => {
     const getProducts = async () => {
       const response = await getProductsByCategory("Dia");
+      response.sort((a, b) => a.name.localeCompare(b.name));
       setProducts(response);
     };
     getProducts();

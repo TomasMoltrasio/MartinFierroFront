@@ -10,39 +10,34 @@ export default function MenuFeatureContainer() {
       link: "/menu/1",
     },
     2: {
-      title: "Picadas",
-      image: "/features/picada.webp",
+      title: "Empanadas",
+      image: "/features/empanada-carne.webp",
       link: "/menu/2",
     },
     3: {
-      title: "Empanadas",
-      image: "/features/empanada-carne.webp",
+      title: "Minutas",
+      image: "/features/bife.webp",
       link: "/menu/3",
     },
     4: {
-      title: "Minutas",
-      image: "/features/bife.webp",
+      title: "Pastas",
+      image: "/features/fideos.webp",
       link: "/menu/4",
     },
     5: {
-      title: "Pastas",
-      image: "/features/fideos.webp",
+      title: "Acompañamientos",
+      image: "/features/papas.webp",
       link: "/menu/5",
     },
     6: {
-      title: "Acompañamientos",
-      image: "/features/papas.webp",
+      title: "Postres",
+      image: "/features/flan.webp",
       link: "/menu/6",
     },
     7: {
-      title: "Postres",
-      image: "/features/flan.webp",
-      link: "/menu/7",
-    },
-    8: {
       title: "Bebidas",
       image: "/features/coca-cola.webp",
-      link: "/menu/8",
+      link: "/menu/7",
     },
   };
 
