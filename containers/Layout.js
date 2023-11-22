@@ -6,14 +6,16 @@ import ChargeContainer from "./ChargeContainer";
 
 export default function Layout({ children }) {
   const [loading, setLoading] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 500);
+    setIsDisabled(process.env.NEXT_PUBLIC_DISABLED === "disabled");
   }, []);
 
-  if (process.env.NEXT_PUBLIC_DISABLED === "disabled") {
+  if (isDisabled) {
     return (
       <div className="h-screen min-h-screen w-screen flex flex-auto flex-col items-center justify-between">
         <Container
