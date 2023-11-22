@@ -26,7 +26,7 @@ export default function Layout({ children }) {
               Sitio en mantenimiento
             </h1>
             <p className="text-lg text-center mb-4">
-              Estamos trabajando para brindarte una mejor experiencia.
+              Estamos trabajando para brindarte una mejor experiencia
             </p>
           </div>
         </Container>
