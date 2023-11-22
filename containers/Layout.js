@@ -6,13 +6,12 @@ import ChargeContainer from "./ChargeContainer";
 
 export default function Layout({ children }) {
   const [loading, setLoading] = useState(true);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 500);
-    setIsDisabled(process.env.NEXT_PUBLIC_DISABLED === "disabled");
   }, []);
 
   if (isDisabled) {
