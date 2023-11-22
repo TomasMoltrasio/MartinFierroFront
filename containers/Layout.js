@@ -13,6 +13,27 @@ export default function Layout({ children }) {
     }, 500);
   }, []);
 
+  if (process.env.NEXT_PUBLIC_DISABLED === "true") {
+    return (
+      <div className="h-screen min-h-screen w-screen flex flex-auto flex-col items-center justify-between">
+        <Container
+          as="main"
+          xl
+          className="flex-auto flex flex-col items-center justify-center bg-slate-100"
+        >
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-4xl font-bold text-center mb-4">
+              Sitio en mantenimiento
+            </h1>
+            <p className="text-lg text-center mb-4">
+              Estamos trabajando para brindarte una mejor experiencia.
+            </p>
+          </div>
+        </Container>
+      </div>
+    );
+  }
+
   return (
     <>
       {loading ? (
