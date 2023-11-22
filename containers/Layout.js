@@ -13,7 +13,7 @@ export default function Layout({ children }) {
     }, 500);
   }, []);
 
-  if (process.env.NEXT_PUBLIC_DISABLED === "true") {
+  if (process.env.NEXT_PUBLIC_DISABLED === "disabled") {
     return (
       <div className="h-screen min-h-screen w-screen flex flex-auto flex-col items-center justify-between">
         <Container
