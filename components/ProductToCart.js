@@ -114,7 +114,7 @@ export default function ProductToCart({ product, handleShowModal }) {
               value={garnishAdd}
               onChange={(e) => {
                 setGarnishAdd(e);
-                setGarnishPrice(e.length * 200);
+                setGarnishPrice(e.length * 400);
               }}
             >
               <Checkbox value="cheddar">Cheddar</Checkbox>
